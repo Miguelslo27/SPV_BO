@@ -58,6 +58,7 @@
 						<option value="null" disabled>Selecciona validación...</option>
 						<optgroup label="Validaciones disponibles">
 							<option value="none" selected>Ninguno</option>
+							<option value="numero">Número</option>
 							<option value="ci">Cédula de Identidad</option>
 						</optgroup>
 					</select>
@@ -77,6 +78,7 @@
 							<option value="numero">Número</option>
 							<option value="moneda-peso">Moneda ($)</option>
 							<option value="moneda-dolar">Moneda (USD)</option>
+							<option value="lista">Lista de opciones</option>
 						</optgroup>
 					</select>
 				</div>
