@@ -1,0 +1,2 @@
+[24-Sep-2016 18:04:26 Etc/GMT] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/seguroparavoscom/public_html/demo/_backoffice/public/index.php on line 50
+[24-Sep-2016 18:06:14 Etc/GMT] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/seguroparavoscom/public_html/demo/_backoffice/public/index.php on line 50

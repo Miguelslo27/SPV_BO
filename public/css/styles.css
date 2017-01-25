@@ -1,0 +1,120 @@
+.navbar-header .btn-logout {
+	border-radius: 0;
+    height: 50px;
+    line-height: 20px;
+    margin-left: -15px;
+    padding: 15px 10px;
+    width: 50px;
+}
+.navbar-brand {
+	margin-left: 0!important;
+}
+
+/* Forms */
+/*.form-group a#status {
+    color: #ddd;
+    font-size: 32px;
+    line-height: 32px;
+    padding: 6px 12px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.form-group a#status:hover {}
+.form-group a#status.fa-toggle-on {}
+.form-group a#status.fa-toggle-off {}*/
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  cursor: pointer;
+
+  color: #ddd;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0;
+  padding: 6px 12px 6px 40px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 17px; height: 17px;
+
+  color: #ddd;
+  line-height: 36px;
+  padding: 6px 12px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+[type="checkbox"]:not(:checked) + label:before {
+	content: '';
+}
+[type="checkbox"]:checked + label:before {
+	color: #398439;
+	content: '';
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {}
+
+/* hover style just for information */
+label:hover:before {}
+
+/* Estado label */
+[type="checkbox"]:not(:checked) + label:after {
+  content: 'Privado';
+}
+[type="checkbox"]:checked + label:after {
+  color: #398439;
+  content: 'Público';
+}
+
+/* Booleano label*/
+.bool[type="checkbox"]:not(:checked) + label:after {
+  content: 'No';
+}
+.bool[type="checkbox"]:checked + label:after {
+  color: #398439;
+  content: 'Si';
+}
+
+.input-group .input-group-addon.currency,
+.input-group .input-group-addon.percent {
+  display: none;
+}
+
+div.alert {
+  border-radius: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 51px;
+  text-align: center;
+  z-index: 10;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: 100%;
+}
