@@ -19,6 +19,8 @@
 |
 */
 
+var_dump(__DIR__);
+
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
