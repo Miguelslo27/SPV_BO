@@ -9,7 +9,7 @@
 
 <div class="list-group">
 @if(!count($atributos))
-	<h3>No se encontraron categorías</h3>
+	<h3>No se encontraron atributos</h3>
 @endif
 @foreach($atributos as $atributo)
 	<div class="list-group-item">
