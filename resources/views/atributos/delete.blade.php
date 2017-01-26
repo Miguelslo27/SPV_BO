@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Seguro deseas eliminar el atributo "{{ $atributo->nombre }}"?</h1>
+<h1>Seguro deseas eliminar el atributo "{{ $atributo->atributo }}"?</h1>
 
 <hr>
 
