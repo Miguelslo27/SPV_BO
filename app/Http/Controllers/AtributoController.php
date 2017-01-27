@@ -66,6 +66,7 @@ class AtributoController extends Controller
 
         $input['aplicacion'] = $seguros;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
 
         Atributo::create($input);
 
@@ -97,9 +98,6 @@ class AtributoController extends Controller
         $atributo = Atributo::findOrFail($id);
         $seguros = Seguro::all();
         $seguros_sel = explode(',', $atributo->aplicacion);
-
-        // var_dump($seguros_sel);
-        // exit;
 
         return view(
             'atributos.edit',
@@ -135,6 +133,7 @@ class AtributoController extends Controller
 
         $input['aplicacion'] = $seguros;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
 
         $atributo->fill($input)->save();
 

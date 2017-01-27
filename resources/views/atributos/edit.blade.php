@@ -69,9 +69,9 @@
 					 class="selectpicker">
 						<option value="null" disabled>Selecciona validación...</option>
 						<optgroup label="Validaciones disponibles">
-							<option value="none" selected>Ninguno</option>
-							<option value="numero">Número</option>
-							<option value="ci">Cédula de Identidad</option>
+							<option value="none" {{ $atributo->validacion == 'none' ?  'selected' : '' }}>Ninguno</option>
+							<option value="numero" {{ $atributo->validacion == 'numero' ?  'selected' : '' }}>Número</option>
+							<option value="ci" {{ $atributo->validacion == 'ci' ?  'selected' : '' }}>Cédula de Identidad</option>
 						</optgroup>
 					</select>
 				</div>
@@ -100,7 +100,7 @@
 		    		<div class="input-group">
 						<span class="input-group-addon currency">$</span>
 						<span class="input-group-addon dollar left-radius-4">USD</span>
-						{!! FORM::number('adhiere', 0, ['class' => 'form-control']) !!}
+						{!! FORM::number('adhiere', $atributo->adhiere, ['class' => 'form-control']) !!}
 					</div>
 					<div class="input-group">
 						<label>Adhiere en USD: </label>
@@ -111,7 +111,7 @@
 				<div class="col-md-3 form-group">
 				    {!! Form::label('cubre', 'Cubre el:', ['class' => 'control-label']) !!}
 					<div class="input-group">
-						{!! FORM::number('cubre', 0, ['class' => 'form-control']) !!}
+						{!! FORM::number('cubre', $atributo->cubre, ['class' => 'form-control']) !!}
 						<span class="input-group-addon">%</span>
 					</div>
 				</div>
