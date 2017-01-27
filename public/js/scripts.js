@@ -2,6 +2,7 @@ $(function () {
 
 fixFooterPos();
 switchCurrencyWithPercent($('#porcentaje'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
+switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function() {
