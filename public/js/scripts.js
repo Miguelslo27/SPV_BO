@@ -42,6 +42,16 @@ $('form').find('select#tipo').each(function() {
 		} else {
 			$table_target.addClass('hidden');
 		}
+
+		if ($(this).val() == 'moneda-peso') {
+			$('input[type=checkbox]#moneda').prop('checked', false);
+			switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+		}
+
+		if ($(this).val() == 'moneda-dolar') {
+			$('input[type=checkbox]#moneda').prop('checked', true);
+			switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+		}
 	});
 });
 
