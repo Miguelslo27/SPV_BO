@@ -2,6 +2,7 @@ $(function () {
 
 fixFooterPos();
 switchCurrencyWithPercent($('#porcentaje'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
+switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function() {
@@ -11,6 +12,10 @@ $(window).on('resize', function() {
 $('body').on('click', '#porcentaje', function() {
 	switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
 });
+
+$('body').on('click', '#moneda', function() {
+	switchCurrencyType($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+})
 
 $('body').on('change', '#unidad_cobertura', function() {
 	fillCobertUnity($(this).val(), $('.unidad-cobertura'));
@@ -36,6 +41,16 @@ $('form').find('select#tipo').each(function() {
 			fixFooterPos();
 		} else {
 			$table_target.addClass('hidden');
+		}
+
+		if ($(this).val() == 'moneda-peso') {
+			$('input[type=checkbox]#moneda').prop('checked', false);
+			switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+		}
+
+		if ($(this).val() == 'moneda-dolar') {
+			$('input[type=checkbox]#moneda').prop('checked', true);
+			switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
 		}
 	});
 });
@@ -215,5 +230,16 @@ function switchCurrencyWithPercent($input, $currency, $percent) {
 	} else {
 		$currency.css({ 'display': 'table-cell' });
 		$percent.hide();
+	}
+}
+
+switchCurrencyType
+function switchCurrencyType($input, $currency, $dollar) {
+	if ($input.is(':checked')) {
+		$currency.hide();
+		$dollar.css({ 'display': 'table-cell' });
+	} else {
+		$currency.css({ 'display': 'table-cell' });
+		$dollar.hide();
 	}
 }

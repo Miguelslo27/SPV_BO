@@ -87,14 +87,20 @@
 				    {!! Form::label('adhiere', 'Adhiere:', ['class' => 'control-label']) !!}
 		    		<div class="input-group">
 						<span class="input-group-addon currency">$</span>
+						<span class="input-group-addon dollar left-radius-4">USD</span>
 						{!! FORM::number('adhiere', 0, ['class' => 'form-control']) !!}
 					</div>
+					<div class="input-group">
+						<label>Adhiere en USD: </label>
+		                <input type="checkbox" class="currency" id="moneda" name="moneda">
+		                <label for="moneda">&nbsp;</label>
+	                </div>
 				</div>
 				<div class="col-md-3 form-group">
 				    {!! Form::label('cubre', 'Cubre el:', ['class' => 'control-label']) !!}
 					<div class="input-group">
 						{!! FORM::number('cubre', 0, ['class' => 'form-control']) !!}
-						<span class="input-group-addon currency">%</span>
+						<span class="input-group-addon">%</span>
 					</div>
 				</div>
 			</div>
