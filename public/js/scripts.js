@@ -12,6 +12,10 @@ $('body').on('click', '#porcentaje', function() {
 	switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
 });
 
+$('body').on('click', '#moneda', function() {
+	switchCurrencyType($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+})
+
 $('body').on('change', '#unidad_cobertura', function() {
 	fillCobertUnity($(this).val(), $('.unidad-cobertura'));
 });
@@ -215,5 +219,16 @@ function switchCurrencyWithPercent($input, $currency, $percent) {
 	} else {
 		$currency.css({ 'display': 'table-cell' });
 		$percent.hide();
+	}
+}
+
+switchCurrencyType
+function switchCurrencyType($input, $currency, $dollar) {
+	if ($input.is(':checked')) {
+		$currency.hide();
+		$dollar.css({ 'display': 'table-cell' });
+	} else {
+		$currency.css({ 'display': 'table-cell' });
+		$dollar.hide();
 	}
 }

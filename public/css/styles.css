@@ -100,9 +100,24 @@ label:hover:before {}
   content: 'Si';
 }
 
+/* Currency label*/
+.currency[type="checkbox"]:not(:checked) + label:after {
+  content: 'USD';
+}
+.currency[type="checkbox"]:checked + label:after {
+  color: #398439;
+  content: 'USD';
+}
+
 .input-group .input-group-addon.currency,
+.input-group .input-group-addon.dollar,
 .input-group .input-group-addon.percent {
   display: none;
+}
+
+.input-group .input-group-addon.left-radius-4 {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 div.alert {
