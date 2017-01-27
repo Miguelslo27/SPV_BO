@@ -19,6 +19,27 @@ $('body').on('change', '#unidad_cobertura', function() {
 // Start tooltips
 $('[data-toggle="tooltip"]').tooltip();
 
+// process form type field if exists
+$('form').find('select#tipo').each(function() {
+	var $table_target = $('form').find('table#table-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
+	
+	if ($(this).val() == 'lista') {
+		$table_target.removeClass('hidden');
+		fixFooterPos();
+	}
+
+	$(this).on('change', function(e) {
+		// If type is 'lista' show the contents table
+		// otherwise hide it
+		if ($(this).val() == 'lista') {
+			$table_target.removeClass('hidden');
+			fixFooterPos();
+		} else {
+			$table_target.addClass('hidden');
+		}
+	});
+});
+
 // Add behavior to table data format
 $('textarea[data-type="table"]').each(function() {
 	var $this       = $(this);
@@ -41,7 +62,7 @@ $('textarea[data-type="table"]').each(function() {
 			is_the_first = false;
 			continue;
 		}
-		// console.log(prop);
+
 		var $row_tmplt = $aux_field.find('tbody tr.row-template');
 	 	var $new_row = $row_tmplt.clone(true);
 	 		$new_row.removeClass('row-template hidden');

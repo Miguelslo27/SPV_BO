@@ -20,7 +20,7 @@
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Atrás
 			</a>
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
@@ -71,6 +71,7 @@
 				    <select
 				     id="tipo"
 					 name="tipo"
+					 data-target="valores"
 					 class="selectpicker">
 						<option value="null" disabled>Selecciona tipo de dato...</option>
 						<optgroup label="Tipos disponibles">
@@ -97,6 +98,80 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row hidden">
+				<div class="col-md-12 form-group">
+					{!! FORM::label('valores', 'Valores de la lista', ['class' => 'control-label']) !!}
+					<p>* Valores de la lista</p>
+					<textarea
+					 name="valores"
+					 id="valores"
+					 data-type="table"
+					 class="form-control hidden"></textarea>
+					<style>
+						.table.textarea-table span {
+							display: block;
+							box-sizing: border-box;
+							width: 100%;
+							min-height: 30px;
+							line-height: 30px;
+							padding: 0 10px;
+							border: 1px solid #ddd;
+							background: #fff;
+						}
+						.table.textarea-table span.table-row-actions {
+							background: none;
+							border: none;
+							text-align: center;
+						}
+					</style>
+					<table id="table-valores" class="textarea-table table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Identificador (interno)</th>
+								<th>Valor</th>
+								<th>
+									<span class="table-row-actions">
+										<a href="#"
+										 class="btn glyphicon glyphicon-plus"
+										 data-toggle="tooltip"
+										 data-placement="left"
+										 title="Agregar fila"></a>
+									</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="row-template hidden">
+								<td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
+								<td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+								<td class="col-md-1 col-md-offset-1">
+									<span class="table-row-actions">
+										<a href="#"
+										 class="btn glyphicon glyphicon-minus"
+										 data-toggle="tooltip"
+										 data-placement="left"
+										 title="Eliminar fila"></a>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
+								<td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+								<td class="col-md-1 col-md-offset-1">
+									<span class="table-row-actions">
+										<a href="#"
+										 class="btn glyphicon glyphicon-minus"
+										 data-toggle="tooltip"
+										 data-placement="left"
+										 title="Eliminar fila"></a>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			
 			<div class="form-group">
 			    <label>Estado: </label>
@@ -106,7 +181,7 @@
 		</div>
 
 		<div class="panel-footer">
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
