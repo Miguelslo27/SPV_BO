@@ -91,7 +91,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label>Valor en %: </label>
-	            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje">
+	            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="valor">
 	                <label for="porcentaje">&nbsp;</label>
 	                <p>* Porcentaje del valor del producto asegurado</p>
 				</div>

@@ -1,8 +1,8 @@
 $(function () {
 
 fixFooterPos();
-switchCurrencyWithPercent($('#porcentaje'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
-switchCurrencyType($('#moneda'), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+switchCurrencyWithPercent($('#porcentaje'));
+switchCurrencyType($('#moneda'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function() {
@@ -223,7 +223,12 @@ function fillCobertUnity(verbose, $tarjet) {
 	});
 }
 
-function switchCurrencyWithPercent($input, $currency, $percent) {
+function switchCurrencyWithPercent($input) {
+	var $target = $('#' + $input.data('input'));
+	var $currency = $target.prev();
+	var $percent = $target.next();
+
+	$('.input-group .input-group-addon.percent')
 	if ($input.is(':checked')) {
 		$currency.hide();
 		$percent.css({ 'display': 'table-cell' });
@@ -233,8 +238,11 @@ function switchCurrencyWithPercent($input, $currency, $percent) {
 	}
 }
 
-switchCurrencyType
-function switchCurrencyType($input, $currency, $dollar) {
+function switchCurrencyType($input) {
+	var $target = $('#' + $input.data('input'));
+	var $dollar = $target.prev();
+	var $currency = $dollar.prev();
+
 	if ($input.is(':checked')) {
 		$currency.hide();
 		$dollar.css({ 'display': 'table-cell' });
