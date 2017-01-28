@@ -1,0 +1,8 @@
+Tasks a agregar a backlog:
+==========================
+
+** Una vez que estos bugs se pasen a backlog eliminarlos de esta lista **
+
+==========================
+
+- Los botones de Atrás, deben ir a la página anterior y no a la lista como lo hacen actualmente

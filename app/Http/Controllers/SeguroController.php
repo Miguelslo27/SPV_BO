@@ -104,6 +104,11 @@ class SeguroController extends Controller
     public function show($id)
     {
         $seguro = Seguro::findOrFail($id);
+        if ($seguro->pertenencia) {
+            $pertenencia = Seguro::findOrFail($seguro->pertenencia);
+            return view('seguros.show', ['seguro' => $seguro, 'pertenencia' => $pertenencia]);
+        }
+
         return view('seguros.show', ['seguro' => $seguro]);
     }
 

@@ -30,12 +30,11 @@
 	</div>
 
 	<div class="panel-body">
-		<!-- <pre>{{ $seguro }}</pre> -->
 		<p>
 			<strong>Pertenece a la categoría </strong><a href="{{ route('categorias.show', $seguro->categoria_padre->id) }}"><span><span class="fa {{ $seguro->categoria_padre->icono }}"></span> {{ $seguro->categoria_padre->nombre }}</span></a>
 		</p>
-		<p> <!-- TODO - Obtener dependencia (pertenencia) por relación -->
-			<strong>Dependencia: </strong><span>@if($seguro->pertenencia != 0) <a href="#">Cobertura por robo</a> @else No tiene @endif</span>
+		<p>
+			<strong>Dependencia: </strong><span>@if($seguro->pertenencia != 0) <a href="{{ route('seguros.show', $pertenencia->id) }}">{{ $pertenencia->nombre }}</a> @else No tiene @endif</span>
 		</p>
 		<p>
 			<strong>Precio: </strong><span>@if($seguro->porcentaje == 0) $ @endif {{ $seguro->valor }} @if($seguro->porcentaje == 1) % @endif</span>
