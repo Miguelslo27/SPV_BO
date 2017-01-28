@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use Session;
 use App\Http\Requests;
 use App\Categoria;
 use App\Seguro;
+use App\Atributo;
 
 class SeguroController extends Controller
 {
@@ -23,7 +25,27 @@ class SeguroController extends Controller
     public function index()
     {
         $seguros = Seguro::all();
+
+        foreach ($seguros as $seguro) {
+            $seguro->atributos = self::getAttributes($seguro->id);
+        }
+
         return view('seguros.index', ['seguros' => $seguros, 'classes_seguros' => 'active']);
+    }
+
+    private function getAttributes($id) {
+        $seguro = Seguro::findOrFail($id);
+        $todos_los_atributos = Atributo::all();
+
+        $seg_atributos = array();
+        foreach ($todos_los_atributos as $atributo) {
+            $atr_seguros = explode(',', $atributo->aplicacion);
+            if (in_array($seguro->id, $atr_seguros)) {
+                $seg_atributos[] = $atributo;
+            }
+        }
+        
+        return $seg_atributos;
     }
 
     /**
