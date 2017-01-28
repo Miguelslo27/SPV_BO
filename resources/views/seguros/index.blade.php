@@ -29,7 +29,7 @@
 	    	<a href="{{ route('seguros.show', $seguro->id) }}">{{ $seguro->nombre }}</a>
 	    </h4>
 	    
-	    <p class="list-group-item-text">Atributos: 0</p>
+	    <p class="list-group-item-text">Atributos: {{ count($seguro->atributos) }}</p>
 	</div>
 @endforeach
 </div>
