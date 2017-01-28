@@ -77,9 +77,6 @@
                 </div>
                 <div class="col-md-3 form-group">
                     {!! FORM::label('pertenencia', 'Dependencia:', ['class' => 'control-label']) !!}
-                    {{ $seguro->pertenencia }}
-                    <br>
-                    {{ $seguro->categoria }}
                     <select name="pertenencia"
                      id="pertenencia"
                      data-live-search="true"
@@ -89,11 +86,7 @@
                         <optgroup label="{{ $categoria->nombre }}">
                             @foreach ($seguros as $pertenencia)
                                 @if ($categoria->id == $seguro->categoria)
-                                    @if ($seguro->pertenencia == $pertenencia->id)
-                                    <option value="{{ $pertenencia->id }}" selected>{{ $pertenencia->nombre }}</option>
-                                    @else
-                                    <option value="{{ $pertenencia->id }}">{{ $pertenencia->nombre }}</option>
-                                    @endif
+                                <option value="{{ $pertenencia->id }}" {{ ($seguro->pertenencia == $pertenencia->id && $seguro->id != $pertenencia->id) ? 'selected' : '' }} {{ $seguro->id == $pertenencia->id ? 'disabled' : '' }}>{{ $pertenencia->nombre }}</option>
                                 @endif
                             @endforeach
                         </optgroup>
