@@ -92,7 +92,7 @@
 					</div>
 					<div class="input-group">
 						<label>Adhiere en USD: </label>
-		                <input type="checkbox" class="currency" id="moneda" name="moneda">
+		                <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="adhiere">
 		                <label for="moneda">&nbsp;</label>
 	                </div>
 				</div>
