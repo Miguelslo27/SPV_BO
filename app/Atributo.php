@@ -10,6 +10,7 @@ class Atributo extends Model
 
     protected $fillable = [
         'atributo',
+        'modelo',
         'aplicacion',
         'validacion',
         'tipo',
