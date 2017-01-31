@@ -6,3 +6,5 @@ Tasks a agregar a backlog:
 ==========================
 
 - Los botones de Atrás, deben ir a la página anterior y no a la lista como lo hacen actualmente
+- Los mensajes de Exito y Error deben desaparecer luego de unos segundos
+- Atributos: - Agregar validación de tipo Requerido (separado del campo validación; un booleano)
