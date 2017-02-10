@@ -21,7 +21,7 @@
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Atrás
 			</a>
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
@@ -213,7 +213,7 @@
 		</div>
 
 		<div class="panel-footer">
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
