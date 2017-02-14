@@ -12,7 +12,6 @@ class Seguro extends Model
         'nombre',
         'categoria',
         'pertenencia',
-        'porcentaje',
         'valor',
         'pago',
         'valor_cobertura',
