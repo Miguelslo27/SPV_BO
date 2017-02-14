@@ -111,9 +111,7 @@ label:hover:before {}
 
 .input-group .input-group-addon.currency,
 .input-group .input-group-addon.dollar,
-.input-group .input-group-addon.percent {
-  display: none;
-}
+.input-group .input-group-addon.percent {}
 
 .input-group .input-group-addon.left-radius-4 {
   border-top-left-radius: 4px;

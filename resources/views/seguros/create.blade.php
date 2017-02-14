@@ -82,18 +82,11 @@
 					 </select>
 				</div>
 				<div class="col-md-3 form-group">
-					{!! FORM::label('valor', 'Valor:', ['class' => 'control-label']) !!}
+					{!! FORM::label('valor', 'Valor del seguro:', ['class' => 'control-label']) !!}
 					<div class="input-group">
 						<span class="input-group-addon currency">$</span>
 						{!! FORM::number('valor', 0, ['class' => 'form-control']) !!}
-						<span class="input-group-addon percent">%</span>
 					</div>
-				</div>
-				<div class="col-md-3 form-group">
-					<label>Valor en %: </label>
-	            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="valor">
-	                <label for="porcentaje">&nbsp;</label>
-	                <p>* Porcentaje del valor del producto asegurado</p>
 				</div>
 			</div>
 			<div class="row">

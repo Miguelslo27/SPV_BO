@@ -85,7 +85,6 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         Seguro::create($input);
@@ -154,7 +153,6 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         $seguro->fill($input)->save();

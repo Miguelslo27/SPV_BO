@@ -1,21 +1,16 @@
 $(function () {
 
 fixFooterPos();
-switchCurrencyWithPercent($('#porcentaje'));
 switchCurrencyType($('#moneda'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function() {
 	fixFooterPos();
-})
-
-$('body').on('click', '#porcentaje', function() {
-	switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.percent'));
 });
 
 $('body').on('click', '#moneda', function() {
 	switchCurrencyType($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
-})
+});
 
 $('body').on('change', '#unidad_cobertura', function() {
 	fillCobertUnity($(this).val(), $('.unidad-cobertura'));
@@ -221,21 +216,6 @@ function fillCobertUnity(verbose, $tarjet) {
 		}
 		return r;
 	});
-}
-
-function switchCurrencyWithPercent($input) {
-	var $target = $('#' + $input.data('input'));
-	var $currency = $target.prev();
-	var $percent = $target.next();
-
-	$('.input-group .input-group-addon.percent')
-	if ($input.is(':checked')) {
-		$currency.hide();
-		$percent.css({ 'display': 'table-cell' });
-	} else {
-		$currency.css({ 'display': 'table-cell' });
-		$percent.hide();
-	}
 }
 
 function switchCurrencyType($input) {

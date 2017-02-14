@@ -37,7 +37,7 @@
 			<strong>Dependencia: </strong><span>@if($seguro->pertenencia != 0) <a href="{{ route('seguros.show', $pertenencia->id) }}">{{ $pertenencia->nombre }}</a> @else No tiene @endif</span>
 		</p>
 		<p>
-			<strong>Precio: </strong><span>@if($seguro->porcentaje == 0) $ @endif {{ $seguro->valor }} @if($seguro->porcentaje == 1) % @endif</span>
+			<strong>Precio: </strong><span>$ {{ $seguro->valor }}</span>
 		</p>
 		<p>
 			<strong>Cobertura: </strong><span>{{ $seguro->valor_cobertura }} / {{ $seguro->unidad_cobertura }}</span>
