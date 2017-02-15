@@ -97,7 +97,13 @@
                     {!! FORM::label('valor', 'Valor del seguro:', ['class' => 'control-label']) !!}
                     <div class="input-group">
                         <span class="input-group-addon currency">$</span>
+                        <span class="input-group-addon dollar left-radius-4">USD</span>
                         {!! FORM::number('valor', $seguro->valor, ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="input-group">
+                        <label>Valor en USD: </label>
+                        <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="valor" {{ $seguro->moneda == 'USD' ? 'checked=""' : '' }}>
+                        <label for="moneda">&nbsp;</label>
                     </div>
                 </div>
             </div>

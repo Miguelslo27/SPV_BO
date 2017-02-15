@@ -85,8 +85,14 @@
 					{!! FORM::label('valor', 'Valor del seguro:', ['class' => 'control-label']) !!}
 					<div class="input-group">
 						<span class="input-group-addon currency">$</span>
+						<span class="input-group-addon dollar left-radius-4">USD</span>
 						{!! FORM::number('valor', 0, ['class' => 'form-control']) !!}
 					</div>
+					<div class="input-group">
+						<label>Valor en USD: </label>
+		                <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="valor">
+		                <label for="moneda">&nbsp;</label>
+	                </div>
 				</div>
 			</div>
 			<div class="row">
@@ -138,10 +144,6 @@
 					</select>
 				</div>
 			</div>
-			<!--
-			coberturas
-			premio_anual
-			-->
 			<div class="row">
 				<div class="col-md-12 form-group">
 					{!! FORM::label('coberturas', 'Descripción de cobertura', ['class' => 'control-label']) !!}
