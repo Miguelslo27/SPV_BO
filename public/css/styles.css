@@ -33,28 +33,32 @@
 [type="checkbox"]:checked + label {
   position: relative;
   cursor: pointer;
-
   color: #ddd;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
+  line-height: 26px;
   margin: 0;
-  padding: 6px 12px 6px 40px;
+  padding: 4px 8px 4px 40px;
   text-decoration: none;
   vertical-align: middle;
 }
 
 /* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  font-size: 20px;
+}
+
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
+  font-size: 22px;
   font-family: 'FontAwesome';
   position: absolute;
   left: 0;
   top: 0;
   width: 17px; height: 17px;
-
   color: #ddd;
-  line-height: 36px;
-  padding: 6px 12px;
+  line-height: 22px;
+  padding: 6px 10px;
   text-decoration: none;
   vertical-align: middle;
 }

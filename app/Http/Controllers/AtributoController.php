@@ -55,9 +55,7 @@ class AtributoController extends Controller
     {
         $this->validate($request, [
             'atributo' => 'required',
-            'tipo' => 'required',
-            'adhiere' => 'required',
-            'cubre' => 'required'
+            'tipo' => 'required'
         ]);
 
         $input = $request->all();
@@ -67,6 +65,7 @@ class AtributoController extends Controller
         $input['aplicacion'] = $seguros;
         $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
         $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
+        $input['requerido'] = isset ($input['requerido']) && $input['requerido'] == 'on' ? 1 : 0;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         Atributo::create($input);
@@ -123,9 +122,7 @@ class AtributoController extends Controller
 
         $this->validate($request, [
             'atributo' => 'required',
-            'tipo' => 'required',
-            'adhiere' => 'required',
-            'cubre' => 'required'
+            'tipo' => 'required'
         ]);
 
         $input = $request->all();
@@ -135,6 +132,7 @@ class AtributoController extends Controller
         $input['aplicacion'] = $seguros;
         $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
         $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
+        $input['requerido'] = isset ($input['requerido']) && $input['requerido'] == 'on' ? 1 : 0;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         $atributo->fill($input)->save();

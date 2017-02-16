@@ -33,6 +33,9 @@
 		<p>
 			<strong>Estado: </strong><span>@if($atributo->estado == 1) Público @else Privado @endif</span>
 		</p>
+		<p>
+			<strong>Requerido: </strong><span>@if($atributo->estado == 1) Si @else No @endif</span>
+		</p>
 	</div>
 </div>
 <hr>

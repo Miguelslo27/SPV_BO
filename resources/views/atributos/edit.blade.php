@@ -27,6 +27,16 @@
 			</button>
 
 			<div class="pull-right">
+				<span>
+					<label>Requerido: </label>
+	            	<input type="checkbox" class="bool" id="requerido" name="requerido" {{ $atributo->requerido ? 'checked=""' : '' }}>
+	                <label for="requerido">&nbsp;</label>
+	            </span>
+				<span>
+					<label>Estado: </label>
+	                <input type="checkbox" id="estado" name="estado" {{ $atributo->estado ? 'checked=""' : '' }}>
+	                <label for="estado">&nbsp;</label>
+				</span>
                 <a href="{{ route('atributos.delete', $atributo->id) }}" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                     Eliminar Atributo
@@ -204,12 +214,6 @@
                     </table>
                 </div>
             </div>
-			
-			<div class="form-group">
-                <label>Estado: </label>
-                <input type="checkbox" id="estado" name="estado" {{ $atributo->estado ? 'checked=""' : '' }}>
-                <label for="estado">&nbsp;</label>
-			</div>
 		</div>
 
 		<div class="panel-footer">
