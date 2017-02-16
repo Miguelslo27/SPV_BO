@@ -20,6 +20,7 @@ class Atributo extends Model
         'moneda',
         'porcentaje',
         'cubre',
+        'requerido',
         'estado'
     ];
 
