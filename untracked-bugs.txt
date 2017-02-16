@@ -13,10 +13,8 @@ Tasks a agregar a backlog:
 
 - Agregar validación tipo texto (sin números)
 
-- Dejar el valor "Cubre" de atributos como pendiente
-
-- En atributos, el campo Adhiere debe ser en precio fijo ($ o USD) o %
-
 - Más adelante permitir cargar valores de atributos tipo lista, mediante CSV
 
 - Agregar un botón de Ver sitio en el encabezado del backoffice
+
+- Agregar un filtro rápido a las listas

@@ -132,12 +132,16 @@
 		                <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="adhiere" {{ $atributo->moneda == 'USD' ? 'checked=""' : '' }}>
 		                <label for="moneda">&nbsp;</label>
 	                </div>
+					<div class="input-group">		
+						<label>Adhiere con %: </label>		
+		            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="adhiere" {{ $atributo->porcentaje == 1 ? 'checked=""' : '' }}>		
+		                <label for="porcentaje">&nbsp;</label>		
+		                <p>* Porcentaje del valor del atributo</p>	
+					</div>
 				</div>
 				<div class="col-md-3 form-group">		
-					<label>Adhiere con %: </label>		
-	            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="adhiere" {{ $atributo->porcentaje == 1 ? 'checked=""' : '' }}>		
-	                <label for="porcentaje">&nbsp;</label>		
-	                <p>* Porcentaje del valor del atributo</p>	
+					{!! Form::label('orden', 'Orden:', ['class' => 'control-label']) !!}
+	            	{!! FORM::number('orden', $atributo->orden, ['class' => 'form-control']) !!}
 				</div>
 			</div>
 

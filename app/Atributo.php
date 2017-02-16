@@ -13,6 +13,7 @@ class Atributo extends Model
         'modelo',
         'aplicacion',
         'validacion',
+        'orden',
         'tipo',
         'valores',
         'dependencia',
