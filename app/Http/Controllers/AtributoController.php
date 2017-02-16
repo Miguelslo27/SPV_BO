@@ -66,6 +66,7 @@ class AtributoController extends Controller
 
         $input['aplicacion'] = $seguros;
         $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         Atributo::create($input);
@@ -132,8 +133,9 @@ class AtributoController extends Controller
         $seguros = implode(',', $seguros_arr ? $seguros_arr : []);
 
         $input['aplicacion'] = $seguros;
-        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
         $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
+        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         $atributo->fill($input)->save();
 

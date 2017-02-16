@@ -2,6 +2,7 @@ $(function () {
 
 fixFooterPos();
 switchCurrencyType($('#moneda'));
+switchCurrencyWithPercent($('#porcentaje'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function() {
@@ -10,6 +11,9 @@ $(window).on('resize', function() {
 
 $('body').on('click', '#moneda', function() {
 	switchCurrencyType($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
+});
+$('body').on('click', '#porcentaje', function() {
+	switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency, .input-group .input-group-addon.dollar'), $('.input-group .input-group-addon.percent'));
 });
 
 $('body').on('change', '#unidad_cobertura', function() {
@@ -222,12 +226,40 @@ function switchCurrencyType($input) {
 	var $target = $('#' + $input.data('input'));
 	var $dollar = $target.prev();
 	var $currency = $dollar.prev();
+	var $percent = $('#porcentaje');
+
+	if (!$percent.is(':checked')) {
+		if ($input.is(':checked')) {
+			$currency.hide();
+			$dollar.css({ 'display': 'table-cell' });
+		} else {
+			$currency.css({ 'display': 'table-cell' });
+			$dollar.hide();
+		}
+	}
+}
+
+function switchCurrencyWithPercent($input) {
+	var $target = $('#' + $input.data('input'));
+	var $dollar = $target.prev();
+	var $currency = $target.prev().prev();
+	var $percent = $target.next();
+	var $currency2 = $('#moneda');
 
 	if ($input.is(':checked')) {
+		$currency2.parents('.input-group:first').hide();
 		$currency.hide();
-		$dollar.css({ 'display': 'table-cell' });
-	} else {
-		$currency.css({ 'display': 'table-cell' });
 		$dollar.hide();
+		$percent.css({ 'display': 'table-cell' });
+	} else {
+		$currency2.parents('.input-group:first').show();
+		if ($('#moneda').is(':checked')) {
+			$currency.hide();
+			$dollar.css({ 'display': 'table-cell' });
+		} else {
+			$dollar.hide();
+			$currency.css({ 'display': 'table-cell' });
+		}
+		$percent.hide();
 	}
 }

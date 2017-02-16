@@ -115,6 +115,7 @@
 						<span class="input-group-addon currency">$</span>
 						<span class="input-group-addon dollar left-radius-4">USD</span>
 						{!! FORM::number('adhiere', $atributo->adhiere, ['class' => 'form-control']) !!}
+						<span class="input-group-addon percent">%</span>
 					</div>
 					<div class="input-group">
 						<label>Adhiere en USD: </label>
@@ -122,12 +123,11 @@
 		                <label for="moneda">&nbsp;</label>
 	                </div>
 				</div>
-				<div class="col-md-3 form-group">
-				    {!! Form::label('cubre', 'Cubre el:', ['class' => 'control-label']) !!}
-					<div class="input-group">
-						{!! FORM::number('cubre', $atributo->cubre, ['class' => 'form-control']) !!}
-						<span class="input-group-addon">%</span>
-					</div>
+				<div class="col-md-3 form-group">		
+					<label>Adhiere con %: </label>		
+	            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="adhiere" {{ $atributo->porcentaje == 1 ? 'checked=""' : '' }}>		
+	                <label for="porcentaje">&nbsp;</label>		
+	                <p>* Porcentaje del valor del atributo</p>	
 				</div>
 			</div>
 
