@@ -18,6 +18,7 @@ class Atributo extends Model
         'dependencia',
         'adhiere',
         'moneda',
+        'porcentaje',
         'cubre',
         'estado'
     ];
