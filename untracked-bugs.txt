@@ -1,0 +1,20 @@
+Tasks a agregar a backlog:
+==========================
+
+** Una vez que estos bugs se pasen a backlog eliminarlos de esta lista **
+
+==========================
+
+- Los botones de Atrás, deben ir a la página anterior y no a la lista como lo hacen actualmente
+
+- Los mensajes de Exito y Error deben desaparecer luego de unos segundos
+
+- Agregar Eliminar en bundle (en todos los abms)
+
+- Agregar validación tipo texto (sin números)
+
+- Más adelante permitir cargar valores de atributos tipo lista, mediante CSV
+
+- Agregar un botón de Ver sitio en el encabezado del backoffice
+
+- Agregar un filtro rápido a las listas

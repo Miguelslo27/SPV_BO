@@ -10,14 +10,18 @@ class Atributo extends Model
 
     protected $fillable = [
         'atributo',
+        'modelo',
         'aplicacion',
         'validacion',
+        'orden',
         'tipo',
         'valores',
         'dependencia',
         'adhiere',
         'moneda',
+        'porcentaje',
         'cubre',
+        'requerido',
         'estado'
     ];
 

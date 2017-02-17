@@ -84,13 +84,9 @@
                         <option value="null">Selecciona seguro</option>
                         @foreach ($categorias as $categoria)
                         <optgroup label="{{ $categoria->nombre }}">
-                            @foreach ($seguros as $seguro)
+                            @foreach ($seguros as $pertenencia)
                                 @if ($categoria->id == $seguro->categoria)
-                                    @if ($seguro->pertenencia == $seguro->id)
-                                    <option value="{{ $seguro->id }}" selected>{{ $seguro->nombre }}</option>
-                                    @else
-                                    <option value="{{ $seguro->id }}">{{ $seguro->nombre }}</option>
-                                    @endif
+                                <option value="{{ $pertenencia->id }}" {{ ($seguro->pertenencia == $pertenencia->id && $seguro->id != $pertenencia->id) ? 'selected' : '' }} {{ $seguro->id == $pertenencia->id ? 'disabled' : '' }}>{{ $pertenencia->nombre }}</option>
                                 @endif
                             @endforeach
                         </optgroup>
@@ -98,24 +94,22 @@
                      </select>
                 </div>
                 <div class="col-md-3 form-group">
-                    {!! FORM::label('valor', 'Valor:', ['class' => 'control-label']) !!}
+                    {!! FORM::label('valor', 'Valor del seguro:', ['class' => 'control-label']) !!}
                     <div class="input-group">
                         <span class="input-group-addon currency">$</span>
+                        <span class="input-group-addon dollar left-radius-4">USD</span>
                         {!! FORM::number('valor', $seguro->valor, ['class' => 'form-control']) !!}
-                        <span class="input-group-addon percent">%</span>
                     </div>
-                </div>
-                <div class="col-md-3 form-group">
-                    <label>Valor en %: </label>
-                        <input type="checkbox" class="bool" id="porcentaje" name="porcentaje" {{ $seguro->porcentaje ? 'checked=""' : '' }}>
-                    <label for="porcentaje">&nbsp;</label>
-                    <p>* Porcentaje del valor del producto asegurado</p>
+                    <div class="input-group">
+                        <label>Valor en USD: </label>
+                        <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="valor" {{ $seguro->moneda == 'USD' ? 'checked=""' : '' }}>
+                        <label for="moneda">&nbsp;</label>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 form-group">
                     {!! FORM::label('pago', 'Recurrencia de pago:', ['class' => 'control-label']) !!}
-                    {{ $seguro->pago }}
                     <select name="pago"
                      id="pago"
                      class="selectpicker">

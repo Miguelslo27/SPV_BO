@@ -85,7 +85,7 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
+        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         Seguro::create($input);
@@ -104,6 +104,11 @@ class SeguroController extends Controller
     public function show($id)
     {
         $seguro = Seguro::findOrFail($id);
+        if ($seguro->pertenencia) {
+            $pertenencia = Seguro::findOrFail($seguro->pertenencia);
+            return view('seguros.show', ['seguro' => $seguro, 'pertenencia' => $pertenencia]);
+        }
+
         return view('seguros.show', ['seguro' => $seguro]);
     }
 
@@ -149,7 +154,7 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['porcentaje'] = isset ($input['porcentaje']) && $input['porcentaje'] == 'on' ? 1 : 0;
+        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
         $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
 
         $seguro->fill($input)->save();

@@ -24,6 +24,19 @@
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
+
+			<div class="pull-right">
+				<span>
+					<label>Requerido: </label>
+	            	<input type="checkbox" class="bool" id="requerido" name="requerido">
+	                <label for="requerido">&nbsp;</label>
+	            </span>
+				<span>
+					<label>Estado: </label>
+	            	<input type="checkbox" id="estado" name="estado">
+	                <label for="estado">&nbsp;</label>
+	            </span>
+            </div>
 		</div>
 
 		<div class="panel-body">
@@ -66,7 +79,21 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-6 form-group">
+				<div class="col-md-3 form-group">
+					{!! Form::label('modelo', 'Modelo:', ['class' => 'control-label']) !!}
+					<select
+					 name="modelo"
+					 id="modelo"
+					 class="selectpicker">
+					 	<option value="null" disabled>Selecciona el modelo</option>
+					 	<optgroup label="Modelos aplicables">
+					 		<option value="usuario">Usuario</option>
+					 		<option value="poliza">Póliza</option>
+					 		<option value="cotizacion">Cotización</option>
+					 	</optgroup>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
 				    {!! Form::label('tipo', 'Tipo de dato:', ['class' => 'control-label']) !!}
 				    <select
 				     id="tipo"
@@ -89,19 +116,23 @@
 						<span class="input-group-addon currency">$</span>
 						<span class="input-group-addon dollar left-radius-4">USD</span>
 						{!! FORM::number('adhiere', 0, ['class' => 'form-control']) !!}
+						<span class="input-group-addon percent">%</span>
 					</div>
 					<div class="input-group">
 						<label>Adhiere en USD: </label>
-		                <input type="checkbox" class="currency" id="moneda" name="moneda">
+		                <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="adhiere">
 		                <label for="moneda">&nbsp;</label>
 	                </div>
-				</div>
-				<div class="col-md-3 form-group">
-				    {!! Form::label('cubre', 'Cubre el:', ['class' => 'control-label']) !!}
-					<div class="input-group">
-						{!! FORM::number('cubre', 0, ['class' => 'form-control']) !!}
-						<span class="input-group-addon">%</span>
+					<div class="input-group">		
+						<label>Adhiere con %: </label>		
+		            	<input type="checkbox" class="bool" id="porcentaje" name="porcentaje" data-input="adhiere">		
+		                <label for="porcentaje">&nbsp;</label>		
+		                <p>* Porcentaje del valor del atributo</p>	
 					</div>
+				</div>
+				<div class="col-md-3 form-group">		
+					{!! Form::label('orden', 'Orden:', ['class' => 'control-label']) !!}
+	            	{!! FORM::number('orden', 0, ['class' => 'form-control']) !!}
 				</div>
 			</div>
 
@@ -177,12 +208,6 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
-			
-			<div class="form-group">
-			    <label>Estado: </label>
-            	<input type="checkbox" id="estado" name="estado">
-                <label for="estado">&nbsp;</label>
 			</div>
 		</div>
 
