@@ -12,6 +12,7 @@ class Seguro extends Model
         'nombre',
         'categoria',
         'pertenencia',
+        'orden',
         'valor',
         'moneda',
         'pago',

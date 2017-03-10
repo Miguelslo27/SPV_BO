@@ -23,7 +23,7 @@
 			</a>
 			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
-				Guardar
+				Guardar cambios
 			</button>
 
 			<div class="pull-right">
@@ -223,7 +223,7 @@
 		<div class="panel-footer">
 			<button type="submit" class="btn btn-primary save">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
-				Guardar
+				Guardar cambios
 			</button>
 		</div>
 	</div>

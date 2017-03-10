@@ -37,6 +37,11 @@
             </button>
             
             <div class="pull-right">
+                <span>
+                    <label>Estado: </label>
+                    <input type="checkbox" id="estado" name="estado" {{ $categoria->estado ? 'checked=""' : '' }}>
+                    <label for="estado">&nbsp;</label>
+                </span>
                 <a href="{{ route('categorias.delete', $categoria->id) }}" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                     Eliminar Categoría
@@ -75,11 +80,6 @@
                  type="text"
                  role="iconpicker">
                 </button>
-
-                &nbsp;
-                <label>Estado: </label>
-                <input type="checkbox" id="estado" name="estado" {{ $categoria->estado ? 'checked=""' : '' }}>
-                <label for="estado">&nbsp;</label>
             </div>
         </div>
 
