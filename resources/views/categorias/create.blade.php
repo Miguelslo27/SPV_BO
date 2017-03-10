@@ -34,6 +34,14 @@
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
+
+			<div class="pull-right">
+				<span>
+					<label>Estado: </label>
+	            	<input type="checkbox" id="estado" name="estado">
+	                <label for="estado">&nbsp;</label>
+	            </span>
+            </div>
 		</div>
 
 		<div class="panel-body">
@@ -67,18 +75,6 @@
                  type="text"
                  role="iconpicker">
                 </button>
-
-				&nbsp;
-				<label>Estado:</label>
-            	<input type="checkbox" id="estado" name="estado">
-                <label for="estado">&nbsp;</label>
-
-                <!-- <input type="checkbox" id="estado" name="estado">
-
-                <a href="#" id="status" role="boolean" class="status-private">
-                	<span class="fa fa-toggle-off"></span>
-                	<span>Privado</span>
-                </a> -->
 			</div>
 		</div>
 

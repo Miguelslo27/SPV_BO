@@ -34,6 +34,14 @@
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
+
+			<div class="pull-right">
+				<span>
+					<label>Estado: </label>
+	            	<input type="checkbox" id="estado" name="estado">
+	                <label for="estado">&nbsp;</label>
+	            </span>
+            </div>
 		</div>
 
 		<div class="panel-body">
@@ -94,8 +102,6 @@
 		                <label for="moneda">&nbsp;</label>
 	                </div>
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-md-3 form-group">
 					{!! FORM::label('pago', 'Recurrencia de pago:', ['class' => 'control-label']) !!}
 					<select name="pago"
@@ -106,7 +112,12 @@
 					 	<option value="anual">Anual</option>
 					 </select>
 				</div>
-
+			</div>
+			<div class="row">
+				<div class="col-md-3 form-group">		
+					{!! Form::label('orden', 'Orden:', ['class' => 'control-label']) !!}
+	            	{!! FORM::number('orden', 0, ['class' => 'form-control']) !!}
+				</div>
 				<div class="col-md-3 form-group">
 					{!! FORM::label('unidad_cobertura', 'Cobertura:', ['class' => 'control-label']) !!}
 					<div class="row">
@@ -273,12 +284,6 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
-
-			<div class="form-group">
-			    <label>Estado: </label>
-            	<input type="checkbox" id="estado" name="estado">
-                <label for="estado">&nbsp;</label>
 			</div>
 		</div>
 
