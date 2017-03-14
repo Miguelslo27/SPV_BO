@@ -72,6 +72,7 @@
 						<optgroup label="Validaciones disponibles">
 							<option value="none" selected>Ninguno</option>
 							<option value="numero">Número</option>
+							<option value="email">Email</option>
 							<option value="ci">Cédula de Identidad</option>
 						</optgroup>
 					</select>

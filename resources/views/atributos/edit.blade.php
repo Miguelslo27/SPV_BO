@@ -81,6 +81,7 @@
 						<optgroup label="Validaciones disponibles">
 							<option value="none" {{ $atributo->validacion == 'none' ?  'selected' : '' }}>Ninguno</option>
 							<option value="numero" {{ $atributo->validacion == 'numero' ?  'selected' : '' }}>Número</option>
+							<option value="email" {{ $atributo->validacion == 'email' ?  'selected' : '' }}>Email</option>
 							<option value="ci" {{ $atributo->validacion == 'ci' ?  'selected' : '' }}>Cédula de Identidad</option>
 						</optgroup>
 					</select>
