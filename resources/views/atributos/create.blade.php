@@ -80,36 +80,46 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-3 form-group">
-					{!! Form::label('modelo', 'Modelo:', ['class' => 'control-label']) !!}
-					<select
-					 name="modelo"
-					 id="modelo"
-					 class="selectpicker">
-					 	<option value="null" disabled>Selecciona el modelo</option>
-					 	<optgroup label="Modelos aplicables">
-					 		<option value="usuario">Usuario</option>
-					 		<option value="poliza">Póliza</option>
-					 		<option value="cotizacion">Cotización</option>
-					 	</optgroup>
-					</select>
-				</div>
-				<div class="col-md-3 form-group">
-				    {!! Form::label('tipo', 'Tipo de dato:', ['class' => 'control-label']) !!}
-				    <select
-				     id="tipo"
-					 name="tipo"
-					 data-target="valores"
-					 class="selectpicker">
-						<option value="null" disabled>Selecciona tipo de dato...</option>
-						<optgroup label="Tipos disponibles">
-							<option value="texto">Texto</option>
-							<option value="numero">Número</option>
-							<option value="moneda-peso">Moneda ($)</option>
-							<option value="moneda-dolar">Moneda (USD)</option>
-							<option value="lista">Lista de opciones</option>
-						</optgroup>
-					</select>
+				<div class="col-md-6 form-group">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							{!! Form::label('ayuda', 'Texto de ayuda', ['class' => 'control-label']) !!}
+							{!! Form::text('ayuda', null, ['class' => 'form-control']) !!}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							{!! Form::label('modelo', 'Modelo:', ['class' => 'control-label']) !!}
+							<select
+							 name="modelo"
+							 id="modelo"
+							 class="selectpicker">
+							 	<option value="null" disabled>Selecciona el modelo</option>
+							 	<optgroup label="Modelos aplicables">
+							 		<option value="usuario">Usuario</option>
+							 		<option value="poliza">Póliza</option>
+							 		<option value="cotizacion">Cotización</option>
+							 	</optgroup>
+							</select>
+						</div>
+						<div class="col-md-6 form-group">
+						    {!! Form::label('tipo', 'Tipo de dato:', ['class' => 'control-label']) !!}
+						    <select
+						     id="tipo"
+							 name="tipo"
+							 data-target="valores"
+							 class="selectpicker">
+								<option value="null" disabled>Selecciona tipo de dato...</option>
+								<optgroup label="Tipos disponibles">
+									<option value="texto">Texto</option>
+									<option value="numero">Número</option>
+									<option value="moneda-peso">Moneda ($)</option>
+									<option value="moneda-dolar">Moneda (USD)</option>
+									<option value="lista">Lista de opciones</option>
+								</optgroup>
+							</select>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-3 form-group">
 				    {!! Form::label('adhiere', 'Adhiere:', ['class' => 'control-label']) !!}
