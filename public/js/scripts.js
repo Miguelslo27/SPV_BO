@@ -101,8 +101,8 @@ $('body').on('submit', '#upload-file', function (e) {
 
   $('#upload-new-file')
    .parents('span:first')
-   .find('.upload-file-name')
    .addClass('btn-danger')
+   .find('.upload-file-name')
    .text('Subiendo archivo...');
 
   $('#upload-new-file')
