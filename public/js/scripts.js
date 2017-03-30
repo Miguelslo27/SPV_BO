@@ -5,19 +5,19 @@ switchCurrencyType($('#moneda'));
 switchCurrencyWithPercent($('#porcentaje'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
-$(window).on('resize', function() {
+$(window).on('resize', function () {
   fixFooterPos();
 });
 
-$('body').on('click', '#moneda', function() {
+$('body').on('click', '#moneda', function () {
   switchCurrencyType($(this), $('.input-group .input-group-addon.currency'), $('.input-group .input-group-addon.dollar'));
 });
 
-$('body').on('click', '#porcentaje', function() {
+$('body').on('click', '#porcentaje', function () {
   switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency, .input-group .input-group-addon.dollar'), $('.input-group .input-group-addon.percent'));
 });
 
-$('body').on('click', '.file-wrap', function(e) {
+$('body').on('click', '.file-wrap', function (e) {
   var $this = $(this),
       $target = $(e.target);
 
@@ -29,7 +29,15 @@ $('body').on('click', '.file-wrap', function(e) {
   }
 });
 
-$('body').on('click', '.file-command.fa-trash', function(e) {
+$('body').on('click', '#seleccionar-archivo', function (e) {
+  if ($('.file-wrap.selected-file').length) {
+    $('#condiciones').val($('.file-wrap.selected-file').data('downloadpath'));
+    $('.condiciones-text').text($('.file-wrap.selected-file').data('filename'));
+    $('#filesystem').modal('hide');
+  }
+});
+
+$('body').on('click', '.file-command.fa-trash', function (e) {
   e.preventDefault();
 
   // Set loading
@@ -190,7 +198,7 @@ $('body').on('submit', '#upload-file', function (e) {
   });
 });
 
-$('body').on('change', '#unidad_cobertura', function() {
+$('body').on('change', '#unidad_cobertura', function () {
   fillCobertUnity($(this).val(), $('.unidad-cobertura'));
 });
 
@@ -198,7 +206,7 @@ $('body').on('change', '#unidad_cobertura', function() {
 $('[data-toggle="tooltip"]').tooltip();
 
 // process form type field if exists
-$('form').find('select#tipo').each(function() {
+$('form').find('select#tipo').each(function () {
   var $table_target = $('form').find('table#table-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
   
   if ($(this).val() == 'lista') {
@@ -206,7 +214,7 @@ $('form').find('select#tipo').each(function() {
     fixFooterPos();
   }
 
-  $(this).on('change', function(e) {
+  $(this).on('change', function (e) {
     // If type is 'lista' show the contents table
     // otherwise hide it
     if ($(this).val() == 'lista') {
@@ -229,7 +237,7 @@ $('form').find('select#tipo').each(function() {
 });
 
 // Add behavior to table data format
-$('textarea[data-type="table"]').each(function() {
+$('textarea[data-type="table"]').each(function () {
   var $this       = $(this);
   var type        = $this.data('type');
   var id          = $this.attr('id');
@@ -270,7 +278,7 @@ $('textarea[data-type="table"]').each(function() {
     // Asumimos que el aux_field es una tabla con un formato específico
     $aux_field
      .find('thead th a.btn.glyphicon-plus')
-     .on('click', function(e) {
+     .on('click', function (e) {
       e.preventDefault();
 
       // Obtengo el template row de esta tabla
@@ -284,7 +292,7 @@ $('textarea[data-type="table"]').each(function() {
 
     $aux_field
      .find('tbody td a.btn.glyphicon-minus')
-     .on('click', function(e) {
+     .on('click', function (e) {
       e.preventDefault();
 
       var $this = $(this);
@@ -298,7 +306,7 @@ $('textarea[data-type="table"]').each(function() {
         if ($('#last-row-deleteion').length) {
           $('#last-row-deleteion').fadeIn();
         } else {
-          $('body').append(function() {
+          $('body').append(function () {
             return '<div id="last-row-deleteion" class="alert alert-danger" role="alert"><b>No se puede eliminar la fila.</b> La tabla no puede estar vacía.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>'
           });
         }
@@ -306,7 +314,7 @@ $('textarea[data-type="table"]').each(function() {
      })
      .end()
      .find('tbody td span[contenteditable="true"]')
-     .on('keypress', function(e) {
+     .on('keypress', function (e) {
       if (e.keyCode == 13) {
         e.preventDefault();
 
@@ -330,7 +338,7 @@ $('textarea[data-type="table"]').each(function() {
   }
 });
 
-$('form').on('click', '.save', function(e) {
+$('form').on('click', '.save', function (e) {
   e.preventDefault();
 
   var $form = $(this).parents('form:first');
@@ -341,7 +349,7 @@ $('form').on('click', '.save', function(e) {
     return;
   }
 
-  $tables.each(function() {
+  $tables.each(function () {
     var $this       = $(this);
     var type        = $this.data('type');
     var id          = $this.attr('id');
@@ -350,7 +358,7 @@ $('form').on('click', '.save', function(e) {
 
     var object = {};
 
-    $aux_field.find('tbody tr:visible').each(function() {
+    $aux_field.find('tbody tr:visible').each(function () {
       var $row = $(this);
       var prop_key = $row.find('td span.table-field').html();
       var prop_val = $row.find('td span.table-value').html();
@@ -382,7 +390,7 @@ function fixFooterPos() {
 }
 
 function fillCobertUnity(verbose, $tarjet) {
-  $tarjet.html(function() {
+  $tarjet.html(function () {
     var r = '';
     switch (verbose) {
       case 'mensual':
