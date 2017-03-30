@@ -30,12 +30,14 @@
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Atrás
             </a>
-
             <button type="submit" class="btn btn-primary save">
                 <span class="glyphicon glyphicon-floppy-disk"></span>
                 Guardar cambios
             </button>
-
+            <a href="#" class="btn btn-default upload-file" data-toggle="modal" data-target="#filesystem">
+                <span class="fa fa-file-pdf-o"></span>
+                Condiciones del seguro
+            </a>
             <div class="pull-right">
                 <span>
                     <label>Estado: </label>
@@ -308,5 +310,107 @@
     </div>
 
 {!! Form::close() !!}
+
+<div class="modal fade" id="filesystem" tabindex="-1" role="dialog" aria-labelledby="filesystemLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <span class="fa fa-files-o"></span>
+                    Archivos
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-title">
+                                <h3>Detalles</h3>
+                            </div>
+                            <div class="col-content">
+                                <p>No se ha seleccionado ningún archivo</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-title">
+                                <h3>Archivos</h3>
+                                <span id="csrf_token_val" class="hidden">{{ csrf_token() }}</span>
+                            </div>
+                            @if (count($archivos))
+                            <div class="col-commands">
+                                <span><strong>Archivos:</strong> <span class="count-files">{{ count($archivos) }}</span></span>
+                                <form action="/filesystem/add" id="upload-file">
+                                    <input type="file" id="upload-new-file">
+                                    <input type="text" id="csrf_token" disabled value="{{ csrf_token() }}">
+                                    <input type="submit" value="Subir">
+                                </form>
+                            </div>
+                            <div class="col-content">
+                                <div class="files-container">
+                                    @foreach ($archivos as $archivo)
+                                    <div class="file-wrap"
+                                     data-mimetype="{{ $archivo['mimeType'] }}"
+                                     data-filename="{{ $archivo['name'] }}"
+                                     data-size="{{ $archivo['size'] }}"
+                                     data-lastmodified="{{ $archivo['lastModified'] }}"
+                                     data-viewpath="{{ $archivo['view_path'] }}"
+                                     data-deletepath="{{ $archivo['trash_path'] }}"
+                                     data-downloadpath="{{ $archivo['download_path'] }}"
+                                     data-toggle="tooltip"
+                                     data-placement="top"
+                                     title="{{ $archivo["name"] }}">
+                                        <span class="fa fa-file-{{ $archivo['mimeType'] == 'application/pdf' ? 'pdf-' : '' }}o"></span>
+                                        <span class="file-name">
+                                            <a href="{{ $archivo['view_path'] }}" target="_blank" class="file-link">{{ substr($archivo["name"], 0, 16) }}...</a>
+                                        </span>
+                                        <span class="fa fa-check hidden"></span>
+                                        <div class="file-commands">
+                                            <div class="buttons">
+                                                <a href="{{ $archivo['view_path'] }}"
+                                                 target="_blank"
+                                                 class="fa fa-eye file-command"
+                                                 data-toggle="tooltip"
+                                                 data-placement="top"
+                                                 title="Abrir"></a>
+                                                <a href="{{ $archivo['download_path'] }}"
+                                                 class="fa fa-cloud-download file-command"
+                                                 data-toggle="tooltip"
+                                                 data-placement="top"
+                                                 title="Descargar"></a>
+                                                <a href="{{ $archivo['trash_path'] }}"
+                                                 class="fa fa-trash file-command"
+                                                 data-toggle="tooltip"
+                                                 data-placement="top"
+                                                 title="Eliminar"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @else
+                            <div class="col-content">
+                                <p>No se han encontrado archivos</p>
+                                <form action="/filesystem/add" id="upload-file">
+                                    <input type="file" id="upload-new-file">
+                                    <input type="text" id="csrf_token" disabled value="{{ csrf_token() }}">
+                                    <input type="submit" value="Subir">
+                                </form>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-success">
+                <button type="button" class="btn btn-default bnt-cancel" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btn-select-file">Seleccionar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @stop

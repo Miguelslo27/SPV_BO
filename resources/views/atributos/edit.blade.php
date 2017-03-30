@@ -97,7 +97,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-3 form-group">
+						<div class="col-md-6 form-group">
 							{!! Form::label('modelo', 'Modelo:', ['class' => 'control-label']) !!}
 							<select
 							 name="modelo"
@@ -111,7 +111,7 @@
 							 	</optgroup>
 							</select>
 						</div>
-						<div class="col-md-3 form-group">
+						<div class="col-md-6 form-group">
 						    {!! Form::label('tipo', 'Tipo de dato:', ['class' => 'control-label']) !!}
 						    <select
 						     id="tipo"
