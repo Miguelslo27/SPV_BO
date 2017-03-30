@@ -19,6 +19,7 @@ class Seguro extends Model
         'valor_cobertura',
         'unidad_cobertura',
         'descripcion',
+        'condiciones',
         'coberturas',
         'premio_anual',
         'aseguradora',

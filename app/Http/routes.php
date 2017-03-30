@@ -50,6 +50,45 @@ Route::get('logout', [
 	'uses' => 'Auth\AuthController@logout'
 ]);
 
+// Files routes...
+Route::get('filesystem', function () {
+	Storage::disk('public')->put('salame.txt', 'El contenido del archivo');
+	return 'Guardado';
+});
+
+Route::post('filesystem/add', function () {
+	$file = Request::file(0);
+	Storage::disk('public')->put($file->getClientOriginalName(),  File::get($file));
+	return '{
+		"mimeType" : "'.$file->getMimeType().'",
+		"name" : "'.$file->getClientOriginalName().'",
+		"size" : "'.$file->getSize().'",
+		"lastModified": "'.time().'"
+	}';
+});
+
+Route::get('filesystem/{name}', function ($name) {
+	return Storage::disk('public')->get($name);
+});
+
+Route::get('filesystem/pdf/{name}', function ($name) {
+	return Response::make(Storage::disk('public')->get($name), 200, [
+	    'Content-Type' => 'application/pdf',
+	    'Content-Disposition' => 'inline; filename="'.$name.'"'
+	]);
+});
+
+Route::get('filesystem/pdf/download/{name}', function ($name) {
+	return Response::download(storage_path('app/public/pdf/'.$name), $name);
+});
+
+Route::get('filesystem/pdf/delete/{name}', function ($name) {
+	$solution = Storage::disk('public')->delete($name);
+	return Response::make('{}', 200, [
+		'Content-Type' => 'application/json'
+	]);
+});
+
 // Registration Routes...
 Route::get('__private_register', 'Auth\AuthController@showRegistrationForm');
 Route::post('__private_register', 'Auth\AuthController@register');
