@@ -59,12 +59,27 @@ class SeguroController extends Controller
     {
         $categorias = Categoria::all();
         $seguros = Seguro::all();
+        $files = Storage::disk('public')->allFiles();
+        $archivos = array();
+
+        foreach($files as $file) {
+            $archivos[] = array(
+                "name" => $file,
+                "view_path" => '/filesystem/pdf/'.$file,
+                "download_path" => '/filesystem/pdf/download/'.$file,
+                "trash_path" => '/filesystem/pdf/delete/'.$file,
+                "size" => Storage::disk('public')->size($file),
+                "mimeType" => Storage::disk('public')->mimeType($file),
+                "lastModified" => Storage::disk('public')->lastModified($file)
+            );
+        }
         
         return view(
             'seguros.create',
             [
                 'seguros' => $seguros,
-                'categorias' => $categorias
+                'categorias' => $categorias,
+                'archivos' => $archivos
             ]
         );
     }
@@ -139,8 +154,6 @@ class SeguroController extends Controller
                 "lastModified" => Storage::disk('public')->lastModified($file)
             );
         }
-
-        // var_dump($archivos);
 
         return view(
             'seguros.edit',

@@ -35,8 +35,9 @@
                 Guardar cambios
             </button>
             <a href="#" class="btn btn-default upload-file" data-toggle="modal" data-target="#filesystem">
+                <input type="hidden" name="condiciones" id="condiciones" value="{{ $seguro->condiciones }}">
                 <span class="fa fa-file-pdf-o"></span>
-                Condiciones del seguro
+                <span class="condiciones-text">{{ $seguro->condiciones ? str_replace('/filesystem/pdf/download/', '', $seguro->condiciones) : 'Agregar condiciones al seguro' }}</span>
             </a>
             <div class="pull-right">
                 <span>
@@ -411,7 +412,7 @@
             </div>
             <div class="modal-footer bg-success">
                 <button type="button" class="btn btn-default bnt-cancel" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary btn-select-file">Seleccionar</button>
+                <button type="button" class="btn btn-primary btn-select-file" id="seleccionar-archivo">Seleccionar</button>
             </div>
         </div>
     </div>
