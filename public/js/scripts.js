@@ -60,9 +60,11 @@ $('body').on('click', '.file-command.fa-trash', function(e) {
             return '' +
             '<p>No se han encontrado archivos</p>' + 
             '<form action="/filesystem/add" id="upload-file">' +
-                '<input type="file" id="upload-new-file">' +
-                '<input type="text" id="csrf_token" disabled value="' + $('#csrf_token_val').text() + '">' +
-                '<input type="submit" value="Subir">' +
+                '<span class="btn btn-default btn-file">' +
+                    '<span class="upload-file-name">Agregar archivo</span> <input type="file" id="upload-new-file">' +
+                '</span>' +
+                '<input type="hidden" id="csrf_token" disabled value="' + $('#csrf_token_val').text() + '"> ' +
+                '<button type="submit" class="btn btn-primary fa fa-cloud-upload hidden"></button>' +
             '</form>';
           });
         }
@@ -73,6 +75,16 @@ $('body').on('click', '.file-command.fa-trash', function(e) {
 
 $('body').on('change', '#upload-new-file', function (e) {
   window.__upload_files = e.target.files;
+  $(this)
+   .parents('span:first')
+   .find('.upload-file-name')
+   .text(e.target.files[0].name);
+
+  $(this)
+   .parents('span:first')
+   .next()
+   .next()
+   .removeClass('hidden');
 });
 
 $('body').on('submit', '#upload-file', function (e) {
@@ -86,7 +98,18 @@ $('body').on('submit', '#upload-file', function (e) {
   });
 
   data.append('_token', $(this).find('#csrf_token').val());
-  console.log(data.keys());
+
+  $('#upload-new-file')
+   .parents('span:first')
+   .find('.upload-file-name')
+   .addClass('btn-danger')
+   .text('Subiendo archivo...');
+
+  $('#upload-new-file')
+   .parents('span:first')
+   .next()
+   .next()
+   .addClass('hidden');
 
   $.ajax({
     url: $(this).attr('action'),
@@ -97,6 +120,12 @@ $('body').on('submit', '#upload-file', function (e) {
     processData: false,
     contentType: false,
     success: function (data, status, xhr) {
+      $('#upload-new-file')
+       .parents('span:first')
+       .removeClass('btn-danger')
+       .find('.upload-file-name')
+       .text('Agregar archivo');
+
       var $newFile = $('' +
       '<div class="file-wrap"' +
        'data-mimetype="' + data.mimeType + '"' +
@@ -139,10 +168,12 @@ $('body').on('submit', '#upload-file', function (e) {
       if (!$('.files-container').length) {
         $('<div class="col-commands">' +
             '<span><strong>Archivos:</strong> <span class="count-files">' + 1 + '</span></span>' +
-            '<form action="/filesystem/add" id="upload-file">' +
-                '<input type="file" id="upload-new-file">' +
-                '<input type="text" id="csrf_token" disabled value="' + $('#csrf_token_val').text() + '">' +
-                '<input type="submit" value="Subir">' +
+            '<form action="/filesystem/add" id="upload-file" class="pull-right">' +
+                '<span class="btn btn-default btn-file">' +
+                    '<span class="upload-file-name">Agregar archivo</span> <input type="file" id="upload-new-file">' +
+                '</span>' +
+                '<input type="hidden" id="csrf_token" disabled value="' + $('#csrf_token_val').text() + '"> ' +
+                '<button type="submit" class="btn btn-primary fa fa-cloud-upload hidden"></button>' +
             '</form>' +
         '</div>').insertAfter('#filesystem .modal-body .col-md-8 .col-title');
 

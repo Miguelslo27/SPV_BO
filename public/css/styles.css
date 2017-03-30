@@ -186,6 +186,35 @@ div.alert {
   display: flex;
   flex-flow: row wrap;
 }
+#upload-file * {
+  height: 30px;
+  line-height: 30px;
+}
+#upload-file .btn {
+  padding: 0 12px;
+}
+#upload-file button.btn {}
+#upload-file .btn-file {
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  border-color: #337ab7;
+}
+#upload-file .btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
 .files-container .file-wrap {
   position: relative;
   border: 1px solid #fff;
