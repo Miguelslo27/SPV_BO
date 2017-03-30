@@ -342,10 +342,12 @@
                             @if (count($archivos))
                             <div class="col-commands">
                                 <span><strong>Archivos:</strong> <span class="count-files">{{ count($archivos) }}</span></span>
-                                <form action="/filesystem/add" id="upload-file">
-                                    <input type="file" id="upload-new-file">
-                                    <input type="text" id="csrf_token" disabled value="{{ csrf_token() }}">
-                                    <input type="submit" value="Subir">
+                                <form action="/filesystem/add" id="upload-file" class="pull-right">
+                                    <span class="btn btn-default btn-file">
+                                        <span class="upload-file-name">Agregar archivo</span> <input type="file" id="upload-new-file">
+                                    </span>
+                                    <input type="hidden" id="csrf_token" disabled value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-primary fa fa-cloud-upload hidden"></button>
                                 </form>
                             </div>
                             <div class="col-content">
@@ -395,9 +397,11 @@
                             <div class="col-content">
                                 <p>No se han encontrado archivos</p>
                                 <form action="/filesystem/add" id="upload-file">
-                                    <input type="file" id="upload-new-file">
-                                    <input type="text" id="csrf_token" disabled value="{{ csrf_token() }}">
-                                    <input type="submit" value="Subir">
+                                    <span class="btn btn-default btn-file">
+                                        <span class="upload-file-name">Agregar archivo</span> <input type="file" id="upload-new-file">
+                                    </span>
+                                    <input type="hidden" id="csrf_token" disabled value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-primary fa fa-cloud-upload hidden"></button>
                                 </form>
                             </div>
                             @endif
