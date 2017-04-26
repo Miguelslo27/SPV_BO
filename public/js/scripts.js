@@ -363,6 +363,9 @@ $('form').on('click', '.save', function (e) {
       var prop_key = $row.find('td span.table-field').html();
       var prop_val = $row.find('td span.table-value').html();
 
+      prop_key = cleanText(prop_key);
+      prop_val = cleanText(prop_val);
+
       if ($.trim(prop_key) != '') {
         object[prop_key] = prop_val;
       }
@@ -375,6 +378,11 @@ $('form').on('click', '.save', function (e) {
 });
 
 });
+
+function cleanText(text) {
+  var tagre = new RegExp("<[^>]*>", "gi");
+  return text.split(tagre).join('');
+}
 
 function fixFooterPos() {
   if ($('body').outerHeight() < $(window).outerHeight()) {
