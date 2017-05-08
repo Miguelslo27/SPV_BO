@@ -102,8 +102,9 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
-        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda']    = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['estado']    = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['comprobar'] = isset ($input['comprobar']) && $input['comprobar'] == 'on' ? 1 : 0;
 
         Seguro::create($input);
 
@@ -187,8 +188,9 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
-        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda']    = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['estado']    = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['comprobar'] = isset ($input['comprobar']) && $input['comprobar'] == 'on' ? 1 : 0;
 
         $seguro->fill($input)->save();
 

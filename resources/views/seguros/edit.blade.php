@@ -155,14 +155,21 @@
                 </div>
 
                 <div class="col-md-3 form-group">
-                    {!! FORM::label('aseguradora', 'Aseguradora:', ['class' => 'control-label']) !!}
-                    <select name="aseguradora"
-                     id="aseguradora"
-                     class="selectpicker">
-                        <option value="null">Selecciona aseguradora</option>
-                        <option value="mapfre" {{ $seguro->aseguradora == 'mapfre' ?  'selected' : '' }}>Mapfre</option>
-                        <option value="uruguay-asistencia" {{ $seguro->aseguradora == 'uruguay-asistencia' ?  'selected' : '' }}>Uruguay Asistencia</option>
-                    </select>
+                  {!! FORM::label('aseguradora', 'Aseguradora:', ['class' => 'control-label']) !!}
+                  <select name="aseguradora"
+                   id="aseguradora"
+                   class="selectpicker">
+                    <option value="null">Selecciona aseguradora</option>
+                    <option value="mapfre" {{ $seguro->aseguradora == 'mapfre' ?  'selected' : '' }}>Mapfre</option>
+                    <option value="uruguay-asistencia" {{ $seguro->aseguradora == 'uruguay-asistencia' ?  'selected' : '' }}>Uruguay Asistencia</option>
+                  </select>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label>Requerir comprobantes: </label>
+                    <br>
+                    <input type="checkbox" class="bool" id="comprobar" name="comprobar" {{ $seguro->comprobar ? 'checked=""' : '' }}>
+                    <label for="comprobar">&nbsp;</label>
+                  </div>
                 </div>
             </div>
 

@@ -23,6 +23,7 @@ class Seguro extends Model
         'coberturas',
         'premio_anual',
         'aseguradora',
+        'comprobar',
         'descripcion',
         'estado'
     ];
