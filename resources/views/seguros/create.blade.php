@@ -101,9 +101,9 @@
 					</div>
 					<div class="input-group">
 						<label>Valor en USD: </label>
-              <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="valor">
-              <label for="moneda">&nbsp;</label>
-            </div>
+            <input type="checkbox" class="currency" id="moneda" name="moneda" data-input="valor">
+            <label for="moneda">&nbsp;</label>
+          </div>
 				</div>
 				<div class="col-md-3 form-group">
 					{!! FORM::label('pago', 'Recurrencia de pago:', ['class' => 'control-label']) !!}
@@ -113,13 +113,13 @@
 					 	<option value="null">Selecciona recurrencia</option>
 					 	<option value="mensual">Mensual</option>
 					 	<option value="anual">Anual</option>
-					 </select>
+					</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3 form-group">		
 					{!! Form::label('orden', 'Orden:', ['class' => 'control-label']) !!}
-	            	{!! FORM::number('orden', 0, ['class' => 'form-control']) !!}
+	        {!! FORM::number('orden', 0, ['class' => 'form-control']) !!}
 				</div>
 				<div class="col-md-3 form-group">
 					{!! FORM::label('unidad_cobertura', 'Cobertura:', ['class' => 'control-label']) !!}
@@ -158,12 +158,11 @@
 				</div>
         <div class="col-md-3 form-group">
           <label>Requerir comprobantes: </label>
-            <br>
-            <input type="checkbox" class="bool" id="comprobar" name="comprobar">
-            <label for="comprobar">&nbsp;</label>
-          </div>
+          <br>
+          <input type="checkbox" class="bool" id="comprobar" name="comprobar">
+          <label for="comprobar">&nbsp;</label>
         </div>
-			</div>
+      </div>
 			<div class="row">
 				<div class="col-md-12 form-group">
 					{!! FORM::label('coberturas', 'Descripción de cobertura', ['class' => 'control-label']) !!}

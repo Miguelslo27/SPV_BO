@@ -51,11 +51,6 @@ Route::get('logout', [
 ]);
 
 // Files routes...
-Route::get('filesystem', function () {
-	Storage::disk('public')->put('salame.txt', 'El contenido del archivo');
-	return 'Guardado';
-});
-
 Route::post('filesystem/add', function () {
 	$file = Request::file(0);
 	Storage::disk('public')->put($file->getClientOriginalName(),  File::get($file));
