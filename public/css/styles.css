@@ -344,3 +344,19 @@ div.alert {
   font-weight: bold;
 }
 .files-container .file-wrap.selected-file .file-name a {}
+
+.table.textarea-table span {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.table.textarea-table span.table-row-actions {
+  background: none;
+  border: none;
+  text-align: center;
+}
