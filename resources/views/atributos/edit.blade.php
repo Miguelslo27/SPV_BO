@@ -180,10 +180,10 @@
         <textarea
          name="precios_avanzados"
          id="precios_avanzados"
-         data-type="list"
+         data-type="object"
          class="form-control">{{ $seguro->precios_avanzados }}</textarea>
         <table
-         id="list-precios_avanzados"
+         id="object-precios_avanzados"
          class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
@@ -272,9 +272,9 @@
         <textarea
          name="valores"
          id="valores"
-         data-type="table"
+         data-type="object"
          class="form-control hidden">{{ $atributo->valores }}</textarea>
-        <table id="table-valores" class="textarea-table table table-striped table-hover">
+        <table id="object-valores" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
               <th>Identificador (interno)</th>
@@ -292,7 +292,7 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-key"></td>
               <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
@@ -305,7 +305,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-key"></td>
               <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">

@@ -345,6 +345,7 @@ div.alert {
 }
 .files-container .file-wrap.selected-file .file-name a {}
 
+/* Tablas */
 .table.textarea-table input,
 .table.textarea-table select {
   display: block;

@@ -193,8 +193,8 @@
         <table id="object-coberturas" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
-              <th>Nombre de la propiedad</th>
-              <th>Atributo de la propiedad</th>
+              <th>Cobertura</th>
+              <th>Valor de la cobertura</th>
               <th>
                 <span class="table-row-actions">
                   <a href="#"
@@ -208,8 +208,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
+              <td class="col-md-5"><input type="text" class="object-valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -221,8 +221,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
+              <td class="col-md-5"><input type="text" class="object-valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -252,8 +252,8 @@
         <table id="object-premio_anual" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
-              <th>Nombre de la propiedad</th>
-              <th>Atributo de la propiedad</th>
+              <th>Premio anual</th>
+              <th>Valor del premio anual</th>
               <th>
                 <span class="table-row-actions">
                   <a href="#"

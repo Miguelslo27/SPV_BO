@@ -245,10 +245,10 @@ $('textarea[data-type]').each(function () {
   var $aux_field   = $('#' + aux_type_id);
   var json_value   = $this.val() != '' ? JSON.parse($this.val()) : ( type == 'object' ? {} : []);
 
-  console.log('Type:', type);
-  console.log('Aux Type ID:', aux_type_id);
-  console.log('Aux Type Field:', $aux_field);
-  console.log('Text Object:', json_value);
+  // console.log('Type:', type);
+  // console.log('Aux Type ID:', aux_type_id);
+  // console.log('Aux Type Field:', $aux_field);
+  // console.log('Text Object:', json_value);
 
   // Process current object
   processJSONValue(type, json_value);
@@ -260,7 +260,8 @@ $('textarea[data-type]').each(function () {
 function processJSONValue(type, json_value) {
   var is_the_first = true;
 
-  
+  console.log(type);
+  console.log(json_value);
 
   // for(var prop in txt_obj) {
   //   if (is_the_first) {

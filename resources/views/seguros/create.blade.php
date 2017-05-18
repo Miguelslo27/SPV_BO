@@ -173,6 +173,7 @@
       </div> <!-- /.col-md-3.form-group -->
     </div> <!-- /.row -->
 
+    <!-- coberturas -->
     <div class="row">
       <div class="col-md-12 form-group">
         {!! FORM::label('coberturas', 'Descripción de cobertura', ['class' => 'control-label']) !!}
@@ -185,8 +186,8 @@
         <table id="table-coberturas" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
-              <th>Nombre de la propiedad</th>
-              <th>Atributo de la propiedad</th>
+              <th>Cobertura</th>
+              <th>Valor de la cobertura</th>
               <th>
                 <span class="table-row-actions">
                   <a href="#"
@@ -200,8 +201,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
+              <td class="col-md-5"><input type="text" class="object-valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -213,8 +214,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
+              <td class="col-md-5"><input type="text" class="object-valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -229,7 +230,9 @@
         </table>
       </div> <!-- /.col-md-12.form-group -->
     </div> <!-- /.row -->
+    <!-- /coberturas -->
 
+    <!-- premio_anual -->
     <div class="row">
       <div class="col-md-12 form-group">
         {!! FORM::label('premio_anual', 'Descripción de premio anual a pagar', ['class' => 'control-label']) !!}
@@ -242,8 +245,8 @@
         <table id="table-premio_anual" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
-              <th>Nombre de la propiedad</th>
-              <th>Atributo de la propiedad</th>
+              <th>Premio anual</th>
+              <th>Valor del premio anual</th>
               <th>
                 <span class="table-row-actions">
                   <a href="#"
