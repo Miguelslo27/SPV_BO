@@ -200,8 +200,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -213,8 +213,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -257,8 +257,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -270,8 +270,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"

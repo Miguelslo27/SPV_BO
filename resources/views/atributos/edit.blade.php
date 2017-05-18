@@ -205,20 +205,23 @@
           <tbody>
             <tr class="row-template hidden">
               <td class="col-md-3">
-                <select class="object-value">
+                <select class="object-value selectpicker">
                   <option value="seguro.valor">Valor del Seguro</option>
+                  <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
-              <td class="col-md-1">
-                <select class="object-operator">
+              <td class="col-md-2">
+                <select class="object-operator selectpicker">
                   <option value="=">Igual a</option>
-                  <option value=">=">Mayor que</option>
-                  <option value="<=">Menor que</option>
+                  <option value=">">Mayor que</option>
+                  <option value="<">Menor que</option>
+                  <option value=">=">Mayor o Igual que</option>
+                  <option value="<=">Menor o Igual que</option>
                 </select>
               </td>
               <td class="col-md-3"><input type="text" class="object-compare"></td>
               <td class="col-md-3"><input type="text" class="object-result"></td>
-              <td class="col-md-1 col-md-offset-1">
+              <td class="col-md-1">
                 <span class="table-row-actions">
                   <a href="#"
                    class="btn glyphicon glyphicon-minus"
@@ -229,17 +232,24 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-3"><input type="text" class="object-value"></td>
-              <td class="col-md-1">
-                <select class="object-operator">
+              <td class="col-md-3">
+                <select class="object-value selectpicker">
+                  <option value="seguro.valor">Valor del Seguro</option>
+                  <option value="variable.value">Valor del Atributo</option>
+                </select>
+              </td>
+              <td class="col-md-2">
+                <select class="object-operator selectpicker">
                   <option value="=">Igual a</option>
-                  <option value=">=">Mayor que</option>
-                  <option value="<=">Menor que</option>
+                  <option value=">">Mayor que</option>
+                  <option value="<">Menor que</option>
+                  <option value=">=">Mayor o Igual que</option>
+                  <option value="<=">Menor o Igual que</option>
                 </select>
               </td>
               <td class="col-md-3"><input type="text" class="object-compare"></td>
               <td class="col-md-3"><input type="text" class="object-result"></td>
-              <td class="col-md-1 col-md-offset-1">
+              <td class="col-md-1">
                 <span class="table-row-actions">
                   <a href="#"
                    class="btn glyphicon glyphicon-minus"
@@ -282,8 +292,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -295,8 +305,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><span class="table-field" contenteditable="true"></span></td>
-              <td class="col-md-5"><span class="table-value" contenteditable="true"></span></td>
+              <td class="col-md-5"><input type="text" class="object-field"></td>
+              <td class="col-md-5"><input type="text" class="object-value"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
