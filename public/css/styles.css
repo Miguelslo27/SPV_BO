@@ -344,3 +344,26 @@ div.alert {
   font-weight: bold;
 }
 .files-container .file-wrap.selected-file .file-name a {}
+
+/* Tablas */
+.table.textarea-table input,
+.table.textarea-table select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.table.textarea-table .btn-group .btn {
+  border-radius: 0;
+  padding: 5px 10px;
+  height: 32px;
+}
+.table.textarea-table span.table-row-actions {
+  background: none;
+  border: none;
+  text-align: center;
+}

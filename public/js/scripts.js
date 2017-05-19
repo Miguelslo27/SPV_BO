@@ -3,6 +3,7 @@ $(function () {
 fixFooterPos();
 switchCurrencyType($('#moneda'));
 switchCurrencyWithPercent($('#porcentaje'));
+switchAdvancedPrices($('#avanzado'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function () {
@@ -15,6 +16,10 @@ $('body').on('click', '#moneda', function () {
 
 $('body').on('click', '#porcentaje', function () {
   switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency, .input-group .input-group-addon.dollar'), $('.input-group .input-group-addon.percent'));
+});
+
+$('body').on('click', '#avanzado', function () {
+  switchAdvancedPrices($(this));
 });
 
 $('body').on('click', '.file-wrap', function (e) {
@@ -207,7 +212,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 // process form type field if exists
 $('form').find('select#tipo').each(function () {
-  var $table_target = $('form').find('table#table-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
+  var $table_target = $('form').find('table#object-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
   
   if ($(this).val() == 'lista') {
     $table_target.removeClass('hidden');
@@ -237,151 +242,165 @@ $('form').find('select#tipo').each(function () {
 });
 
 // Add behavior to table data format
-$('textarea[data-type="table"]').each(function () {
-  var $this       = $(this);
-  var type        = $this.data('type');
-  var id          = $this.attr('id');
-  var aux_type_id = type + '-' + id;
-  var $aux_field  = $('#' + aux_type_id);
-  var txt_obj     = $this.val() != '' ? JSON.parse($this.val()) : {};
+$('textarea[data-type]').each(function () {
+  var $this        = $(this);
+  var type         = $this.data('type');
+  var id           = $this.attr('id');
+  var aux_type_id  = type + '-' + id;
+  var $aux_field   = $('#' + aux_type_id);
+  var json_value   = $this.val() != '' ? JSON.parse($this.val()) : ( type == 'object' ? {} : []);
 
+  // Fill the aux field table with json values
+  fillAuxFieldTable($aux_field, json_value, type);
+
+  // Bind Events
+  bindAuxFieldEvents($aux_field);
+});
+
+function fillAuxFieldTable($aux_field, json_value, type) {
   var is_the_first = true;
-  for(var prop in txt_obj) {
+  var row_keys     = json_value && Array.isArray(json_value) ? Object.keys(json_value[0]) : null;
+
+  if (!row_keys) return;
+
+  json_value.forEach(function (row, index) {
+    var $first_row   = $aux_field.find('tbody tr:visible:eq(0)');
+    var $current_row = null;
+
     if (is_the_first) {
-      var $first_row = $($aux_field.find('tbody tr:visible')[0]);
-      var $row_prop_key = $first_row.find('span.table-field');
-      var $row_prop_val = $first_row.find('span.table-value');
-
-      $row_prop_key.html(prop);
-      $row_prop_val.html(txt_obj[prop]);
-
+      $current_row = $first_row;
       is_the_first = false;
-      continue;
+    } else {
+      $current_row = addNewRow($aux_field, null, true);
     }
 
-    var $row_tmplt = $aux_field.find('tbody tr.row-template');
-    var $new_row = $row_tmplt.clone(true);
+    row_keys.forEach(function (key, index) {
+      var $current_input = $current_row.find('td [data-key=' + key + ']');
+
+      $current_input.val(row[key]);
+      if ($current_input.hasClass('selectpicker')) {
+        $current_input.selectpicker('refresh');
+      }
+    });
+  });
+}
+
+function bindAuxFieldEvents($aux_field) {
+  $aux_field
+   .find('thead th a.btn.glyphicon-plus')
+   .on('click', addNewRow.bind(this, $aux_field))
+   .end()
+   .find('tbody td a.btn.glyphicon-minus')
+   .on('click', deleteRow)
+   .end()
+   .find('tbody td span[contenteditable="true"]')
+   .on('keypress', onKeyPress.bind(this, $aux_field));
+}
+
+function addNewRow($aux_field, e, return_row) {
+  if (e) e.preventDefault();
+
+  // Obtengo el template row de esta tabla
+  var $row_tmplt = $aux_field.find('tbody tr.row-template');
+  var $new_row   = $row_tmplt.clone(true);
       $new_row.removeClass('row-template hidden');
       $new_row.appendTo($aux_field.find('tbody'));
       $new_row.tooltip('destroy');
       $new_row.find('a.btn.glyphicon-minus').tooltip();
 
-    var $new_row_prop_key = $new_row.find('span.table-field');
-    var $new_row_prop_val = $new_row.find('span.table-value');
-      $new_row_prop_key.html(prop);
-      $new_row_prop_val.html(txt_obj[prop]);
-  }
+      $select = $new_row.find('select');
+      $select.addClass('selectpicker');
+      $select.selectpicker();
 
-  // TODO MIKE - Procesar los datos de la tabla
-  // Por ahora sólo será table, pero ya tener en cuenta otros casos
-  if (type == 'table') {
-    // Asumimos que el aux_field es una tabla con un formato específico
-    $aux_field
-     .find('thead th a.btn.glyphicon-plus')
-     .on('click', function (e) {
-      e.preventDefault();
+  if (return_row) return $new_row;
+}
 
-      // Obtengo el template row de esta tabla
-      var $row_tmplt = $aux_field.find('tbody tr.row-template');
-      var $new_row = $row_tmplt.clone(true);
-        $new_row.removeClass('row-template hidden');
-        $new_row.appendTo($aux_field.find('tbody'));
-        $new_row.tooltip('destroy');
-        $new_row.find('a.btn.glyphicon-minus').tooltip();
-     });
-
-    $aux_field
-     .find('tbody td a.btn.glyphicon-minus')
-     .on('click', function (e) {
-      e.preventDefault();
-
-      var $this = $(this);
-      var $this_table = $this.parents('tbody:first');
-      var $table_rows = $this_table.find('tr:visible');
-
-      if ($table_rows.length > 1) {
-        var $this_row = $(this).parents('tr:first');
-          $this_row.remove();
-      } else {
-        if ($('#last-row-deleteion').length) {
-          $('#last-row-deleteion').fadeIn();
-        } else {
-          $('body').append(function () {
-            return '<div id="last-row-deleteion" class="alert alert-danger" role="alert"><b>No se puede eliminar la fila.</b> La tabla no puede estar vacía.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>'
-          });
-        }
-      }
-     })
-     .end()
-     .find('tbody td span[contenteditable="true"]')
-     .on('keypress', function (e) {
-      if (e.keyCode == 13) {
-        e.preventDefault();
-
-        var $this = $(this);
-        var $this_cell = $this.parents('td:first');
-        var $this_row = $this.parents('tr:first');
-
-        if ($this_cell.is(':first-child')) {
-          $this_cell.next().find('span[contenteditable="true"]').focus();
-        } else {
-          var $row_tmplt = $aux_field.find('tbody tr.row-template');
-          var $new_row = $row_tmplt.clone(true);
-            $new_row.removeClass('row-template hidden');
-            $new_row.appendTo($aux_field.find('tbody'));
-            $new_row.tooltip('destroy');
-            $new_row.find('a.btn.glyphicon-minus').tooltip();
-            $new_row.find('td:first-child span[contenteditable="true"]').focus();
-        }
-      }
-     });
-  }
-});
-
-$('form').on('click', '.save', function (e) {
+function deleteRow(e) {
   e.preventDefault();
 
-  var $form = $(this).parents('form:first');
-  var $tables = $form.find('textarea[data-type="table"]');
+  var $this       = $(this);
+  var $this_table = $this.parents('tbody:first');
+  var $table_rows = $this_table.find('tr:visible');
 
-  if (!$tables.length) {
+  if ($table_rows.length > 1) {
+    var $this_row = $(this).parents('tr:first');
+        $this_row.remove();
+  } else {
+    if ($('#last-row-deleteion').length) {
+      $('#last-row-deleteion').fadeIn();
+    } else {
+      $('body').append(function () {
+        return '<div id="last-row-deleteion" class="alert alert-danger" role="alert"><b>No se puede eliminar la fila.</b> La tabla no puede estar vacía.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>'
+      });
+    }
+  }
+}
+
+function onKeyPress($aux_field, e) {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+
+    var $this = $(this);
+    var $this_cell = $this.parents('td:first');
+    var $this_row = $this.parents('tr:first');
+
+    if ($this_cell.is(':first-child')) {
+      $this_cell.next().find('span[contenteditable="true"]').focus();
+    } else {
+      addNewRow($aux_field, e);
+    }
+  }
+}
+
+function onSave(e) {
+  e.preventDefault();
+
+  var $form       = $(this).parents('form:first');
+  var $adv_fields = $form.find('textarea[data-type]');
+
+  if (!$adv_fields.length) {
     $form.submit();
     return;
   }
 
-  $tables.each(function () {
+  $adv_fields.each(function () {
     var $this       = $(this);
     var type        = $this.data('type');
     var id          = $this.attr('id');
     var aux_type_id = type + '-' + id;
     var $aux_field  = $('#' + aux_type_id);
+    var $aux_rows   = $aux_field.find('tbody tr:visible');
+    var json_field  = [];
 
-    var object = {};
-
-    $aux_field.find('tbody tr:visible').each(function () {
+    $aux_rows.each(function () {
       var $row = $(this);
-      var prop_key = $row.find('td span.table-field').html();
-      var prop_val = $row.find('td span.table-value').html();
+      var $inputs = $row.find('td [data-key]');
+      var row_obj = {};
 
-      prop_key = cleanText(prop_key);
-      prop_val = cleanText(prop_val);
+      $inputs.each(function () {
+        var $input = $(this);
 
-      if ($.trim(prop_key) != '') {
-        object[prop_key] = prop_val;
-      }
+        if (cleanText($input.val()) == "") return false;
+
+        row_obj[$input.data('key')] = cleanText($input.val());
+      });
+
+      json_field.push(row_obj);
     });
 
-    $this.val(JSON.stringify(object));
+    $this.val(JSON.stringify(json_field));
   });
 
   $form.submit();
-});
+}
+
+$('form').on('click', '.save', onSave);
 
 });
 
 function cleanText(text) {
   var tagre = new RegExp("<[^>]*>", "gi");
-  return text.split(tagre).join('');
+  return $.trim(text.split(tagre).join(''));
 }
 
 function fixFooterPos() {
@@ -451,6 +470,20 @@ function switchCurrencyWithPercent($input) {
       $currency.css({ 'display': 'table-cell' });
     }
     $percent.hide();
+  }
+}
+
+function switchAdvancedPrices($input) {
+  var $target   = $('#' + $input.data('input'));
+  var $aux_inpt = $('#precios_avanzados');
+  var $aux_inpt_wrp = $aux_inpt.parents('.row:first');
+
+  if ($input.is(':checked')) {
+    $target.hide();
+    $aux_inpt_wrp.show();
+  } else {
+    $target.show();
+    $aux_inpt_wrp.hide();
   }
 }
 
