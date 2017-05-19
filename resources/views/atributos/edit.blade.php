@@ -205,13 +205,13 @@
           <tbody>
             <tr class="row-template hidden">
               <td class="col-md-3">
-                <select class="object-value selectpicker">
+                <select data-key="valor_a_comparar" class="selectpicker">
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
-                <select class="object-operator selectpicker">
+                <select data-key="operador" class="selectpicker">
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
@@ -219,8 +219,8 @@
                   <option value="<=">Menor o Igual que</option>
                 </select>
               </td>
-              <td class="col-md-3"><input type="text" class="object-compare"></td>
-              <td class="col-md-3"><input type="text" class="object-result"></td>
+              <td class="col-md-3"><input type="text" data-key="referencia"></td>
+              <td class="col-md-3"><input type="text" data-key="resultado"></td>
               <td class="col-md-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -233,13 +233,13 @@
             </tr>
             <tr>
               <td class="col-md-3">
-                <select class="object-value selectpicker">
+                <select data-key="valor_a_comparar" class="selectpicker">
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
-                <select class="object-operator selectpicker">
+                <select data-key="operador" class="selectpicker">
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
@@ -247,8 +247,8 @@
                   <option value="<=">Menor o Igual que</option>
                 </select>
               </td>
-              <td class="col-md-3"><input type="text" class="object-compare"></td>
-              <td class="col-md-3"><input type="text" class="object-result"></td>
+              <td class="col-md-3"><input type="text" data-key="referencia"></td>
+              <td class="col-md-3"><input type="text" data-key="resultado"></td>
               <td class="col-md-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -265,6 +265,7 @@
     </div> <!-- /.row -->
     <!-- /TEST -->
 
+    <!-- Valores de la lista de opciones -->
     <div class="row hidden">
       <div class="col-md-12 form-group">
         {!! FORM::label('valores', 'Valores de la lista', ['class' => 'control-label']) !!}
@@ -273,7 +274,7 @@
          name="valores"
          id="valores"
          data-type="object"
-         class="form-control hidden">{{ $atributo->valores }}</textarea>
+         class="form-control">{{ $atributo->valores }}</textarea>
         <table id="object-valores" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
@@ -292,8 +293,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-key"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" data-key="id"></td>
+              <td class="col-md-5"><input type="text" data-key="valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -305,8 +306,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-key"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" data-key="id"></td>
+              <td class="col-md-5"><input type="text" data-key="valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -321,6 +322,7 @@
         </table>
       </div> <!-- /.col-md-12 form-group -->
     </div> <!-- /.row.hidden -->
+    <!-- /Valores de la lista de opciones -->
   </div> <!-- /.panel-body -->
 
   <div class="panel-footer">

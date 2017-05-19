@@ -146,6 +146,15 @@
           <label for="porcentaje">&nbsp;</label>    
           <p>* Porcentaje del valor del atributo</p>  
         </div> <!-- /.input-group -->
+
+        <!-- TEST/ADVANCED_PRICE -->
+        <div class="input-group">
+          <label>Avanzado: </label>
+          <input type="checkbox" class="bool" id="avanzado" name="avanzado" data-input="valor" {{ $seguro->avanzado == 'YES' ? 'checked=""' : '' }}>
+          <label for="avanzado">&nbsp;</label>
+          <p>* Configuración avanzada de precios relativos</p>
+        </div>
+        <!-- /TEST -->
       </div> <!-- /.col-md-3 form-group -->
 
       <div class="col-md-3 form-group">   
@@ -153,6 +162,99 @@
         {!! FORM::number('orden', 0, ['class' => 'form-control']) !!}
       </div> <!-- /.col-md-3 form-group -->
     </div> <!-- /.row -->
+
+    <!-- TEST/ADVANCED_PRICE -->
+    <div class="row">
+      <div class="col-md-12 form-group">
+        {!! FORM::label('precios_avanzados', 'Configuración Avanzada de Precios', ['class' => 'control-label']) !!}
+        <p>* Tabla de configuración de precios avanzados</p>
+        <textarea
+         name="precios_avanzados"
+         id="precios_avanzados"
+         data-type="object"
+         class="form-control">{{ $seguro->precios_avanzados }}</textarea>
+        <table
+         id="object-precios_avanzados"
+         class="textarea-table table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Valor a comparar</th>
+              <th>Operador</th>
+              <th>Valor de referencia</th>
+              <th>Resultado</th>
+              <th>
+                <span class="table-row-actions">
+                  <a href="#"
+                   class="btn glyphicon glyphicon-plus"
+                   data-toggle="tooltip"
+                   data-placement="left"
+                   title="Agregar fila"></a>
+                </span>
+              </th>
+            </tr>
+          </thead> 
+          <tbody>
+            <tr class="row-template hidden">
+              <td class="col-md-3">
+                <select data-key="valor_a_comparar" class="selectpicker">
+                  <option value="seguro.valor">Valor del Seguro</option>
+                  <option value="variable.value">Valor del Atributo</option>
+                </select>
+              </td>
+              <td class="col-md-2">
+                <select data-key="operador" class="selectpicker">
+                  <option value="=">Igual a</option>
+                  <option value=">">Mayor que</option>
+                  <option value="<">Menor que</option>
+                  <option value=">=">Mayor o Igual que</option>
+                  <option value="<=">Menor o Igual que</option>
+                </select>
+              </td>
+              <td class="col-md-3"><input type="text" data-key="referencia"></td>
+              <td class="col-md-3"><input type="text" data-key="resultado"></td>
+              <td class="col-md-1">
+                <span class="table-row-actions">
+                  <a href="#"
+                   class="btn glyphicon glyphicon-minus"
+                   data-toggle="tooltip"
+                   data-placement="left"
+                   title="Eliminar fila"></a>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-md-3">
+                <select data-key="valor_a_comparar" class="selectpicker">
+                  <option value="seguro.valor">Valor del Seguro</option>
+                  <option value="variable.value">Valor del Atributo</option>
+                </select>
+              </td>
+              <td class="col-md-2">
+                <select data-key="operador" class="selectpicker">
+                  <option value="=">Igual a</option>
+                  <option value=">">Mayor que</option>
+                  <option value="<">Menor que</option>
+                  <option value=">=">Mayor o Igual que</option>
+                  <option value="<=">Menor o Igual que</option>
+                </select>
+              </td>
+              <td class="col-md-3"><input type="text" data-key="referencia"></td>
+              <td class="col-md-3"><input type="text" data-key="resultado"></td>
+              <td class="col-md-1">
+                <span class="table-row-actions">
+                  <a href="#"
+                   class="btn glyphicon glyphicon-minus"
+                   data-toggle="tooltip"
+                   data-placement="left"
+                   title="Eliminar fila"></a>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table> <!-- /#list-precios_avanzados -->
+      </div> <!-- /.col-md-12 form-group -->
+    </div> <!-- /.row -->
+    <!-- /TEST -->
 
     <!-- Valores de tipo lista -->
     <div class="row hidden">

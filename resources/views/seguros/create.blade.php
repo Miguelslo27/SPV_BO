@@ -181,9 +181,9 @@
         <textarea
          name="coberturas"
          id="coberturas"
-         data-type="table"
+         data-type="object"
          class="form-control hidden"></textarea>
-        <table id="table-coberturas" class="textarea-table table table-striped table-hover">
+        <table id="object-coberturas" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
               <th>Cobertura</th>
@@ -201,8 +201,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
-              <td class="col-md-5"><input type="text" class="object-valor"></td>
+              <td class="col-md-5"><input type="text" data-key="cobertura"></td>
+              <td class="col-md-5"><input type="text" data-key="valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -214,8 +214,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-cobertura"></td>
-              <td class="col-md-5"><input type="text" class="object-valor"></td>
+              <td class="col-md-5"><input type="text" data-key="cobertura"></td>
+              <td class="col-md-5"><input type="text" data-key="valor"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -260,8 +260,8 @@
           </thead>
           <tbody>
             <tr class="row-template hidden">
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" data-key="premio"></td>
+              <td class="col-md-5"><input type="text" data-key="valor_anual"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"
@@ -273,8 +273,8 @@
               </td>
             </tr>
             <tr>
-              <td class="col-md-5"><input type="text" class="object-field"></td>
-              <td class="col-md-5"><input type="text" class="object-value"></td>
+              <td class="col-md-5"><input type="text" data-key="premio"></td>
+              <td class="col-md-5"><input type="text" data-key="valor_anual"></td>
               <td class="col-md-1 col-md-offset-1">
                 <span class="table-row-actions">
                   <a href="#"

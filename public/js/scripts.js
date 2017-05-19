@@ -207,7 +207,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 // process form type field if exists
 $('form').find('select#tipo').each(function () {
-  var $table_target = $('form').find('table#table-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
+  var $table_target = $('form').find('table#object-' + $(this).data('target')).parents('.form-group:first').parents('.row:first');
   
   if ($(this).val() == 'lista') {
     $table_target.removeClass('hidden');
@@ -250,18 +250,48 @@ $('textarea[data-type]').each(function () {
   // console.log('Aux Type Field:', $aux_field);
   // console.log('Text Object:', json_value);
 
+  // Fill the aux field table with json values
+  fillAuxFieldTable($aux_field, json_value, type);
+
   // Process current object
-  processJSONValue(type, json_value);
+  // processJSONValue(type, json_value);
 
   // Bind Events
   bindAuxFieldEvents($aux_field);
 });
 
+function fillAuxFieldTable($aux_field, json_value, type) {
+  var is_the_first = true;
+  var row_keys     = json_value && Array.isArray(json_value) ? Object.keys(json_value[0]) : null;
+
+  if (!row_keys) return;
+
+  // console.log(row_keys);
+  // console.log(type);
+  // console.log(json_value);
+
+  json_value.forEach(function (row, index) {
+    var $first_row   = $aux_field.find('tbody tr:visible:eq(0)');
+    var $current_row = null;
+
+    if (is_the_first) {
+      $current_row = $first_row;
+      is_the_first = false;
+    } else {
+      var $current_row = addNewRow($aux_field, null, true);
+    }
+
+    row_keys.forEach(function (key, index) {
+      $current_row.find('td input[data-key=' + key + ']').val(row[key]);
+    });
+  });
+}
+
 function processJSONValue(type, json_value) {
   var is_the_first = true;
 
-  console.log(type);
-  console.log(json_value);
+  // console.log(type);
+  // console.log(json_value);
 
   // for(var prop in txt_obj) {
   //   if (is_the_first) {
@@ -302,8 +332,8 @@ function bindAuxFieldEvents($aux_field) {
    .on('keypress', onKeyPress.bind(this, $aux_field));
 }
 
-function addNewRow($aux_field, e) {
-  e.preventDefault();
+function addNewRow($aux_field, e, return_row) {
+  if (e) e.preventDefault();
 
   // Obtengo el template row de esta tabla
   var $row_tmplt = $aux_field.find('tbody tr.row-template');
@@ -312,6 +342,8 @@ function addNewRow($aux_field, e) {
       $new_row.appendTo($aux_field.find('tbody'));
       $new_row.tooltip('destroy');
       $new_row.find('a.btn.glyphicon-minus').tooltip();
+
+  if (return_row) return $new_row;
 }
 
 function deleteRow(e) {
