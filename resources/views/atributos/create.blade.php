@@ -226,14 +226,14 @@
             </tr>
             <tr>
               <td class="col-md-3">
-                <select data-key="valor_a_comparar" class="selectpicker">
+                <select data-key="valor_a_comparar">
                   <option></option>
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
-                <select data-key="operador" class="selectpicker">
+                <select data-key="operador">
                   <option></option>
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>

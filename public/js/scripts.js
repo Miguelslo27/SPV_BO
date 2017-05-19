@@ -3,6 +3,7 @@ $(function () {
 fixFooterPos();
 switchCurrencyType($('#moneda'));
 switchCurrencyWithPercent($('#porcentaje'));
+switchAdvancedPrices($('#avanzado'));
 fillCobertUnity($('#unidad_cobertura').val(), $('.unidad-cobertura'));
 
 $(window).on('resize', function () {
@@ -15,6 +16,10 @@ $('body').on('click', '#moneda', function () {
 
 $('body').on('click', '#porcentaje', function () {
   switchCurrencyWithPercent($(this), $('.input-group .input-group-addon.currency, .input-group .input-group-addon.dollar'), $('.input-group .input-group-addon.percent'));
+});
+
+$('body').on('click', '#avanzado', function () {
+  switchAdvancedPrices($(this));
 });
 
 $('body').on('click', '.file-wrap', function (e) {
@@ -270,7 +275,12 @@ function fillAuxFieldTable($aux_field, json_value, type) {
     }
 
     row_keys.forEach(function (key, index) {
-      $current_row.find('td [data-key=' + key + ']').val(row[key]);
+      var $current_input = $current_row.find('td [data-key=' + key + ']');
+
+      $current_input.val(row[key]);
+      if ($current_input.hasClass('selectpicker')) {
+        $current_input.selectpicker('refresh');
+      }
     });
   });
 }
@@ -297,6 +307,10 @@ function addNewRow($aux_field, e, return_row) {
       $new_row.appendTo($aux_field.find('tbody'));
       $new_row.tooltip('destroy');
       $new_row.find('a.btn.glyphicon-minus').tooltip();
+
+      $select = $new_row.find('select');
+      $select.addClass('selectpicker');
+      $select.selectpicker();
 
   if (return_row) return $new_row;
 }
@@ -456,6 +470,20 @@ function switchCurrencyWithPercent($input) {
       $currency.css({ 'display': 'table-cell' });
     }
     $percent.hide();
+  }
+}
+
+function switchAdvancedPrices($input) {
+  var $target   = $('#' + $input.data('input'));
+  var $aux_inpt = $('#precios_avanzados');
+  var $aux_inpt_wrp = $aux_inpt.parents('.row:first');
+
+  if ($input.is(':checked')) {
+    $target.hide();
+    $aux_inpt_wrp.show();
+  } else {
+    $target.show();
+    $aux_inpt_wrp.hide();
   }
 }
 

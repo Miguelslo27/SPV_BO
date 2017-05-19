@@ -158,7 +158,7 @@
         <!-- TEST/ADVANCED_PRICE -->
         <div class="input-group">
           <label>Avanzado: </label>
-          <input type="checkbox" class="bool" id="avanzado" name="avanzado" data-input="valor" {{ $atributo->avanzado == 1 ? 'checked=""' : '' }}>
+          <input type="checkbox" class="bool" id="avanzado" name="avanzado" data-input="adhiere" {{ $atributo->avanzado == 1 ? 'checked=""' : '' }}>
           <label for="avanzado">&nbsp;</label>
           <p>* Configuración avanzada de precios relativos</p>
         </div>
@@ -205,14 +205,14 @@
           <tbody>
             <tr class="row-template hidden">
               <td class="col-md-3">
-                <select data-key="valor_a_comparar" class="selectpicker">
+                <select data-key="valor_a_comparar">
                   <option></option>
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
-                <select data-key="operador" class="selectpicker">
+                <select data-key="operador">
                   <option></option>
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>
