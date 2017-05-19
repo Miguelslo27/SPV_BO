@@ -189,7 +189,7 @@
          name="coberturas"
          id="coberturas"
          data-type="object"
-         class="form-control">{{ $seguro->coberturas }}</textarea>
+         class="form-control hidden">{{ $seguro->coberturas }}</textarea>
         <table id="object-coberturas" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
@@ -248,7 +248,7 @@
          name="premio_anual"
          id="premio_anual"
          data-type="object"
-         class="form-control">{{ $seguro->premio_anual }}</textarea>
+         class="form-control hidden">{{ $seguro->premio_anual }}</textarea>
         <table id="object-premio_anual" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>

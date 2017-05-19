@@ -158,7 +158,7 @@
         <!-- TEST/ADVANCED_PRICE -->
         <div class="input-group">
           <label>Avanzado: </label>
-          <input type="checkbox" class="bool" id="avanzado" name="avanzado" data-input="valor" {{ $seguro->avanzado == 'YES' ? 'checked=""' : '' }}>
+          <input type="checkbox" class="bool" id="avanzado" name="avanzado" data-input="valor" {{ $atributo->avanzado == 1 ? 'checked=""' : '' }}>
           <label for="avanzado">&nbsp;</label>
           <p>* Configuración avanzada de precios relativos</p>
         </div>
@@ -181,7 +181,7 @@
          name="precios_avanzados"
          id="precios_avanzados"
          data-type="object"
-         class="form-control">{{ $seguro->precios_avanzados }}</textarea>
+         class="form-control hidden">{{ $atributo->precios_avanzados }}</textarea>
         <table
          id="object-precios_avanzados"
          class="textarea-table table table-striped table-hover">
@@ -206,12 +206,14 @@
             <tr class="row-template hidden">
               <td class="col-md-3">
                 <select data-key="valor_a_comparar" class="selectpicker">
+                  <option></option>
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
                 <select data-key="operador" class="selectpicker">
+                  <option></option>
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
@@ -234,12 +236,14 @@
             <tr>
               <td class="col-md-3">
                 <select data-key="valor_a_comparar" class="selectpicker">
+                  <option></option>
                   <option value="seguro.valor">Valor del Seguro</option>
                   <option value="variable.value">Valor del Atributo</option>
                 </select>
               </td>
               <td class="col-md-2">
                 <select data-key="operador" class="selectpicker">
+                  <option></option>
                   <option value="=">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
@@ -274,7 +278,7 @@
          name="valores"
          id="valores"
          data-type="object"
-         class="form-control">{{ $atributo->valores }}</textarea>
+         class="form-control hidden">{{ $atributo->valores }}</textarea>
         <table id="object-valores" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>

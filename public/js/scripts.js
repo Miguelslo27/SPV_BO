@@ -245,16 +245,8 @@ $('textarea[data-type]').each(function () {
   var $aux_field   = $('#' + aux_type_id);
   var json_value   = $this.val() != '' ? JSON.parse($this.val()) : ( type == 'object' ? {} : []);
 
-  // console.log('Type:', type);
-  // console.log('Aux Type ID:', aux_type_id);
-  // console.log('Aux Type Field:', $aux_field);
-  // console.log('Text Object:', json_value);
-
   // Fill the aux field table with json values
   fillAuxFieldTable($aux_field, json_value, type);
-
-  // Process current object
-  // processJSONValue(type, json_value);
 
   // Bind Events
   bindAuxFieldEvents($aux_field);
@@ -266,10 +258,6 @@ function fillAuxFieldTable($aux_field, json_value, type) {
 
   if (!row_keys) return;
 
-  // console.log(row_keys);
-  // console.log(type);
-  // console.log(json_value);
-
   json_value.forEach(function (row, index) {
     var $first_row   = $aux_field.find('tbody tr:visible:eq(0)');
     var $current_row = null;
@@ -278,46 +266,13 @@ function fillAuxFieldTable($aux_field, json_value, type) {
       $current_row = $first_row;
       is_the_first = false;
     } else {
-      var $current_row = addNewRow($aux_field, null, true);
+      $current_row = addNewRow($aux_field, null, true);
     }
 
     row_keys.forEach(function (key, index) {
-      $current_row.find('td input[data-key=' + key + ']').val(row[key]);
+      $current_row.find('td [data-key=' + key + ']').val(row[key]);
     });
   });
-}
-
-function processJSONValue(type, json_value) {
-  var is_the_first = true;
-
-  // console.log(type);
-  // console.log(json_value);
-
-  // for(var prop in txt_obj) {
-  //   if (is_the_first) {
-  //     var $first_row    = $($aux_field.find('tbody tr:visible')[0]);
-  //     var $row_prop_key = $first_row.find('span.table-field');
-  //     var $row_prop_val = $first_row.find('span.table-value');
-
-  //     $row_prop_key.html(prop);
-  //     $row_prop_val.html(txt_obj[prop]);
-
-  //     is_the_first = false;
-  //     continue;
-  //   }
-
-  //   var $row_tmplt = $aux_field.find('tbody tr.row-template');
-  //   var $new_row   = $row_tmplt.clone(true);
-  //       $new_row.removeClass('row-template hidden');
-  //       $new_row.appendTo($aux_field.find('tbody'));
-  //       $new_row.tooltip('destroy');
-  //       $new_row.find('a.btn.glyphicon-minus').tooltip();
-
-  //   var $new_row_prop_key = $new_row.find('span.table-field');
-  //   var $new_row_prop_val = $new_row.find('span.table-value');
-  //       $new_row_prop_key.html(prop);
-  //       $new_row_prop_val.html(txt_obj[prop]);
-  // }
 }
 
 function bindAuxFieldEvents($aux_field) {
@@ -383,50 +338,55 @@ function onKeyPress($aux_field, e) {
   }
 }
 
-$('form').on('click', '.save', function (e) {
+function onSave(e) {
   e.preventDefault();
 
-  var $form   = $(this).parents('form:first');
-  var $tables = $form.find('textarea[data-type="table"]');
+  var $form       = $(this).parents('form:first');
+  var $adv_fields = $form.find('textarea[data-type]');
 
-  if (!$tables.length) {
+  if (!$adv_fields.length) {
     $form.submit();
     return;
   }
 
-  $tables.each(function () {
+  $adv_fields.each(function () {
     var $this       = $(this);
     var type        = $this.data('type');
     var id          = $this.attr('id');
     var aux_type_id = type + '-' + id;
     var $aux_field  = $('#' + aux_type_id);
+    var $aux_rows   = $aux_field.find('tbody tr:visible');
+    var json_field  = [];
 
-    var object = {};
+    $aux_rows.each(function () {
+      var $row = $(this);
+      var $inputs = $row.find('td [data-key]');
+      var row_obj = {};
 
-    $aux_field.find('tbody tr:visible').each(function () {
-      var $row     = $(this);
-      var prop_key = $row.find('td span.table-field').html();
-      var prop_val = $row.find('td span.table-value').html();
+      $inputs.each(function () {
+        var $input = $(this);
 
-      prop_key = cleanText(prop_key);
-      prop_val = cleanText(prop_val);
+        if (cleanText($input.val()) == "") return false;
 
-      if ($.trim(prop_key) != '') {
-        object[prop_key] = prop_val;
-      }
+        row_obj[$input.data('key')] = cleanText($input.val());
+      });
+
+      json_field.push(row_obj);
     });
 
-    $this.val(JSON.stringify(object));
+    $this.val(JSON.stringify(json_field));
   });
 
   $form.submit();
-});
+}
+
+$('form').on('click', '.save', onSave);
 
 });
 
 function cleanText(text) {
   var tagre = new RegExp("<[^>]*>", "gi");
-  return text.split(tagre).join('');
+  return $.trim(text.split(tagre).join(''));
 }
 
 function fixFooterPos() {

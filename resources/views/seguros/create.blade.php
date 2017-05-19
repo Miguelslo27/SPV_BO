@@ -240,9 +240,9 @@
         <textarea
          name="premio_anual"
          id="premio_anual"
-         data-type="table"
+         data-type="object"
          class="form-control hidden"></textarea>
-        <table id="table-premio_anual" class="textarea-table table table-striped table-hover">
+        <table id="object-premio_anual" class="textarea-table table table-striped table-hover">
           <thead>
             <tr>
               <th>Premio anual</th>

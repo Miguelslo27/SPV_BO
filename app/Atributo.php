@@ -21,6 +21,8 @@ class Atributo extends Model
         'adhiere',
         'moneda',
         'porcentaje',
+        'avanzado',
+        'precios_avanzados',
         'cubre',
         'requerido',
         'estado'
