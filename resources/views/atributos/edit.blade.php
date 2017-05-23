@@ -214,7 +214,7 @@
               <td class="col-md-2">
                 <select data-key="operador">
                   <option></option>
-                  <option value="=">Igual a</option>
+                  <option value="==">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
                   <option value=">=">Mayor o Igual que</option>
@@ -244,7 +244,7 @@
               <td class="col-md-2">
                 <select data-key="operador" class="selectpicker">
                   <option></option>
-                  <option value="=">Igual a</option>
+                  <option value="==">Igual a</option>
                   <option value=">">Mayor que</option>
                   <option value="<">Menor que</option>
                   <option value=">=">Mayor o Igual que</option>
