@@ -376,16 +376,20 @@ function onSave(e) {
       var $row = $(this);
       var $inputs = $row.find('td [data-key]');
       var row_obj = {};
+      var add_obj = true;
 
       $inputs.each(function () {
         var $input = $(this);
 
-        if (cleanText($input.val()) == "") return false;
+        if (cleanText($input.val()) == "") {
+          add_obj = false;
+          return false;
+        }
 
         row_obj[$input.data('key')] = cleanText($input.val());
       });
 
-      json_field.push(row_obj);
+      if (add_obj) json_field.push(row_obj);
     });
 
     $this.val(JSON.stringify(json_field));
