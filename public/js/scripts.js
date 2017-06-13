@@ -259,7 +259,7 @@ $('textarea[data-type]').each(function () {
 
 function fillAuxFieldTable($aux_field, json_value, type) {
   var is_the_first = true;
-  var row_keys     = json_value && Array.isArray(json_value) ? Object.keys(json_value[0]) : null;
+  var row_keys     = json_value && Array.isArray(json_value) ? ( json_value.length ? Object.keys(json_value[0]) : null ) : null;
 
   if (!row_keys) return;
 
