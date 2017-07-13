@@ -10,6 +10,7 @@ class Atributo extends Model
 
     protected $fillable = [
         'atributo',
+        'ayuda',
         'modelo',
         'aplicacion',
         'validacion',
@@ -20,6 +21,8 @@ class Atributo extends Model
         'adhiere',
         'moneda',
         'porcentaje',
+        'avanzado',
+        'precios_avanzados',
         'cubre',
         'requerido',
         'estado'

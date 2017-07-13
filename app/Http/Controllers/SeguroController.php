@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use Session;
 use App\Http\Requests;
@@ -57,12 +59,27 @@ class SeguroController extends Controller
     {
         $categorias = Categoria::all();
         $seguros = Seguro::all();
+        $files = Storage::disk('public')->allFiles();
+        $archivos = array();
+
+        foreach($files as $file) {
+            $archivos[] = array(
+                "name" => $file,
+                "view_path" => '/filesystem/pdf/'.$file,
+                "download_path" => '/filesystem/pdf/download/'.$file,
+                "trash_path" => '/filesystem/pdf/delete/'.$file,
+                "size" => Storage::disk('public')->size($file),
+                "mimeType" => Storage::disk('public')->mimeType($file),
+                "lastModified" => Storage::disk('public')->lastModified($file)
+            );
+        }
         
         return view(
             'seguros.create',
             [
                 'seguros' => $seguros,
-                'categorias' => $categorias
+                'categorias' => $categorias,
+                'archivos' => $archivos
             ]
         );
     }
@@ -85,8 +102,9 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
-        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda']    = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['estado']    = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['comprobar'] = isset ($input['comprobar']) && $input['comprobar'] == 'on' ? 1 : 0;
 
         Seguro::create($input);
 
@@ -123,12 +141,28 @@ class SeguroController extends Controller
         $seguro = Seguro::findOrFail($id);
         $categorias = Categoria::all();
         $seguros = Seguro::all();
+        $files = Storage::disk('public')->allFiles();
+        $archivos = array();
+
+        foreach($files as $file) {
+            $archivos[] = array(
+                "name" => $file,
+                "view_path" => '/filesystem/pdf/'.$file,
+                "download_path" => '/filesystem/pdf/download/'.$file,
+                "trash_path" => '/filesystem/pdf/delete/'.$file,
+                "size" => Storage::disk('public')->size($file),
+                "mimeType" => Storage::disk('public')->mimeType($file),
+                "lastModified" => Storage::disk('public')->lastModified($file)
+            );
+        }
+
         return view(
             'seguros.edit',
             [
                 'seguro' => $seguro,
                 'seguros' => $seguros,
-                'categorias' => $categorias
+                'categorias' => $categorias,
+                'archivos' => $archivos
             ]
         );
     }
@@ -154,8 +188,9 @@ class SeguroController extends Controller
         ]);
 
         $input = $request->all();
-        $input['moneda'] = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
-        $input['estado'] = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['moneda']    = isset ($input['moneda']) && $input['moneda'] == 'on' ? 'USD' : '$';
+        $input['estado']    = isset ($input['estado']) && $input['estado'] == 'on' ? 1 : 0;
+        $input['comprobar'] = isset ($input['comprobar']) && $input['comprobar'] == 'on' ? 1 : 0;
 
         $seguro->fill($input)->save();
 

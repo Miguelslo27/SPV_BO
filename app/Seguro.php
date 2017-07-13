@@ -12,15 +12,18 @@ class Seguro extends Model
         'nombre',
         'categoria',
         'pertenencia',
+        'orden',
         'valor',
         'moneda',
         'pago',
         'valor_cobertura',
         'unidad_cobertura',
         'descripcion',
+        'condiciones',
         'coberturas',
         'premio_anual',
         'aseguradora',
+        'comprobar',
         'descripcion',
         'estado'
     ];

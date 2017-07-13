@@ -11,18 +11,6 @@
 }
 
 /* Forms */
-/*.form-group a#status {
-    color: #ddd;
-    font-size: 32px;
-    line-height: 32px;
-    padding: 6px 12px;
-    text-decoration: none;
-    vertical-align: middle;
-}
-.form-group a#status:hover {}
-.form-group a#status.fa-toggle-on {}
-.form-group a#status.fa-toggle-off {}*/
-
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
@@ -134,4 +122,248 @@ div.alert {
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
   width: 100%;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+.modal-body {
+  padding: 0;
+}
+.modal-body > .container-fluid > .row > .col-md-4 {
+  border-right: 1px solid #ddd;
+}
+.modal-body > .container-fluid > .row > .col-md-8 {}
+.modal-body > .container-fluid > .row > .col-md-4,
+.modal-body > .container-fluid > .row > .col-md-8 {
+  padding: 0;
+}
+.modal-body > .container-fluid > .row > .col-md-4 .col-title,
+.modal-body > .container-fluid > .row > .col-md-8 .col-title {
+  padding: 20px;
+  height: 66px;
+  line-height: 66px;
+}
+.modal-body > .container-fluid > .row > .col-md-8 .col-commands {
+  padding: 5px 20px;
+  background: #ddd;
+}
+.modal-body > .container-fluid > .row > .col-md-8 .col-commands * {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+.modal-body > .container-fluid > .row > .col-md-4 .col-content,
+.modal-body > .container-fluid > .row > .col-md-8 .col-content {
+  padding: 20px;
+  height: 300px;
+  overflow: auto;
+}
+.modal-body > .container-fluid > .row > .col-md-4 .col-content {
+  height: 340px;
+}
+.modal-body > .container-fluid > .row > .col-md-4 h3,
+.modal-body > .container-fluid > .row > .col-md-8 h3 {
+  margin-top: 0;
+}
+.modal-body > .container-fluid > .row > .col-md-4 .col-content .fa {
+  font-size: 40px;
+}
+
+.files-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+#upload-file * {
+  height: 30px;
+  line-height: 30px;
+}
+#upload-file .btn {
+  padding: 0 12px;
+}
+#upload-file button.btn {}
+#upload-file .btn-file {
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  border-color: #337ab7;
+}
+#upload-file .btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+.files-container .file-wrap {
+  position: relative;
+  border: 1px solid #fff;
+  width: 140px;
+  margin: 10px 20px;
+  color: #666;
+  transition: transform .1s ease;
+}
+.files-container .file-wrap .deleting {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(178, 0, 0, .7);
+  z-index: 3;
+}
+.files-container .file-wrap .deleting .fa,
+.files-container .file-wrap .deleting .del-text {
+  color: #fff;
+}
+.files-container .file-wrap .deleting .del-text {
+  text-align: center;
+  display: block;
+}
+.files-container .file-wrap:hover {
+  border: 1px solid #5cb85c;
+  box-shadow: 0 2px 4px #888888;
+  transition: transform .1s ease;
+}
+.files-container .file-wrap:hover .file-commands {
+  display: block;
+}
+.files-container .file-wrap .file-commands {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 32px;
+  background: rgba(0,0,0,.3);
+  z-index: 1;
+}
+.files-container .file-wrap .file-commands .buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: translate(0, -50%);
+}
+.files-container .file-wrap .file-commands a {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 16px;
+  opacity: .8;
+  margin: 5px auto;
+  background: #fff;
+  border-radius: 3px;
+  color: #999;
+}
+.files-container .file-wrap .file-commands a:hover,
+.files-container .file-wrap .file-commands a:focus {
+  color: #666;
+  opacity: 1;
+  text-decoration: none;
+}
+.files-container .file-wrap .fa {
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  height: 100px;
+  line-height: 100px;
+}
+.files-container .file-wrap .fa.delete-file {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: red;
+  line-height: 15px;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+}
+.files-container .file-wrap .file-name {
+  display: block;
+  word-wrap: break-word;
+  color: white;
+  padding: 5px;
+  height: 32px;
+  line-height: 22px;
+  font-size: 12px;
+  border-radius: 0;
+  background: #999;
+  text-align: center;
+}
+.files-container .file-wrap:hover .file-name {
+  background: #4cae4c;
+}
+.files-container .file-wrap .file-name a {
+  color: #fff;
+}
+
+.files-container .file-wrap.selected-file {
+  border: 2px solid #eea236;
+}
+.files-container .file-wrap.selected-file .fa.fa-check {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block !important;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  background: #eea236;
+}
+.files-container .file-wrap.selected-file:hover {}
+.files-container .file-wrap.selected-file:hover .file-commands {}
+.files-container .file-wrap.selected-file .file-commands {}
+.files-container .file-wrap.selected-file .file-commands .buttons {}
+.files-container .file-wrap.selected-file .file-commands a {}
+.files-container .file-wrap.selected-file .file-commands a:hover,
+.files-container .file-wrap.selected-file .file-commands a:focus {}
+.files-container .file-wrap.selected-file > .fa {
+  height: 98px;
+  color: #eea236;
+}
+.files-container .file-wrap.selected-file .fa.delete-file {}
+.files-container .file-wrap.selected-file .file-name {
+  background: #eea236;
+  border-color: #eea236;
+  font-weight: bold;
+}
+.files-container .file-wrap.selected-file .file-name a {}
+
+/* Tablas */
+.table.textarea-table input,
+.table.textarea-table select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.table.textarea-table .btn-group .btn {
+  border-radius: 0;
+  padding: 5px 10px;
+  height: 32px;
+}
+.table.textarea-table span.table-row-actions {
+  background: none;
+  border: none;
+  text-align: center;
 }
