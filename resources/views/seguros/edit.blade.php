@@ -185,6 +185,10 @@
       <div class="col-md-12 form-group">
         {!! FORM::label('coberturas', 'Descripción de cobertura', ['class' => 'control-label']) !!}
         <p>* Tabla de características de la cobertura</p>
+
+        {!! Form::label('titulo_cobertura', 'Título de la tabla:', ['class' => 'control-label']) !!}
+        {!! Form::text('titulo_cobertura', null, ['class' => 'form-control']) !!}
+        
         <textarea
          name="coberturas"
          id="coberturas"
@@ -244,6 +248,10 @@
       <div class="col-md-12 form-group">
         {!! FORM::label('premio_anual', 'Descripción de premio anual a pagar', ['class' => 'control-label']) !!}
         <p>* Tabla de los premios anuales</p>
+
+        {!! Form::label('titulo_premioanual', 'Título de la tabla:', ['class' => 'control-label']) !!}
+        {!! Form::text('titulo_premioanual', null, ['class' => 'form-control']) !!}
+
         <textarea
          name="premio_anual"
          id="premio_anual"
