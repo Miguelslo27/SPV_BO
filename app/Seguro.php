@@ -22,6 +22,8 @@ class Seguro extends Model
         'condiciones',
         'coberturas',
         'premio_anual',
+        'titulo_cobertura',
+        'titulo_premioanual',
         'aseguradora',
         'comprobar',
         'descripcion',
