@@ -60,6 +60,8 @@
       </div>
       <div class="col-md-9 form-group">
         {!! Form::label('descripcion', 'Descripción breve:', ['class' => 'control-label']) !!}
+        <p><small>Escribe las características separadas por coma: <em><strong>Ejemplo 1, ejemplo 2</strong></em></small></p>
+        <p><small>Para agregar segunda línea a una característica, escribe entre paréntesis rectos: <em>Ejemplo 1 <strong>[Segunda línea]</strong>, Ejemplo 2</em></small></p>
         {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
       </div>
     </div> <!-- /.row -->
