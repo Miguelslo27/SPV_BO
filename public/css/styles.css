@@ -101,6 +101,10 @@ label:hover:before {}
   content: 'USD';
 }
 
+.row#type-number-min-max {
+  display: none;
+}
+
 .input-group .input-group-addon.currency,
 .input-group .input-group-addon.dollar,
 .input-group .input-group-addon.percent {}

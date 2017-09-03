@@ -16,6 +16,8 @@ class Atributo extends Model
         'validacion',
         'orden',
         'tipo',
+        'minimo',
+        'maximo',
         'valores',
         'dependencia',
         'adhiere',

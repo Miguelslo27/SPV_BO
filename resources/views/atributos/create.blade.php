@@ -124,6 +124,18 @@
             </select>
           </div> <!-- /.col-md-6 form-group -->
         </div> <!-- /.row -->
+
+        <!-- MAX MIN NUMBER VALUES -->
+        <div class="row" id="type-number-min-max">
+          <div class="col-md-6 form-group">
+            {!! FORM::label('minimo', 'Valor mínimo del atributo', ['class' => 'control-label']) !!}
+            {!! FORM::number('minimo', 0, ['class' => 'form-control']) !!}
+          </div>
+          <div class="col-md-6 form-group">
+            {!! FORM::label('maximo', 'Valor máximo del atributo', ['class' => 'control-label']) !!}
+            {!! FORM::number('maximo', 0, ['class' => 'form-control']) !!}
+          </div>
+        </div>
       </div> <!-- /.col-md-6 form-group -->
 
       <div class="col-md-3 form-group">
