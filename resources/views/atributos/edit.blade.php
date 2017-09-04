@@ -81,6 +81,7 @@
           <optgroup label="Validaciones disponibles">
             <option value="none" {{ $atributo->validacion == 'none' ?  'selected' : '' }}>Ninguno</option>
             <option value="numero" {{ $atributo->validacion == 'numero' ?  'selected' : '' }}>Número</option>
+            <option value="telefono" {{ $atributo->validacion == 'telefono' ?  'selected' : '' }}>Teléfono/Celular</option>
             <option value="email" {{ $atributo->validacion == 'email' ?  'selected' : '' }}>Email</option>
             <option value="ci" {{ $atributo->validacion == 'ci' ?  'selected' : '' }}>Cédula de Identidad</option>
           </optgroup>
@@ -131,6 +132,18 @@
             </select>
           </div> <!-- /.col-md-6 form-group -->
         </div> <!-- /.row -->
+
+        <!-- MAX MIN NUMBER VALUES -->
+        <div class="row" id="type-number-min-max">
+          <div class="col-md-6 form-group">
+            {!! FORM::label('minimo', 'Valor mínimo del atributo', ['class' => 'control-label']) !!}
+            {!! FORM::number('minimo', $atributo->minimo, ['class' => 'form-control']) !!}
+          </div>
+          <div class="col-md-6 form-group">
+            {!! FORM::label('maximo', 'Valor máximo del atributo', ['class' => 'control-label']) !!}
+            {!! FORM::number('maximo', $atributo->maximo, ['class' => 'form-control']) !!}
+          </div>
+        </div>
       </div> <!-- /.col-md-6 form-group -->
 
       <div class="col-md-3 form-group">

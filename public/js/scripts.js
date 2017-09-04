@@ -22,6 +22,9 @@ $('body').on('click', '#avanzado', function () {
   switchAdvancedPrices($(this));
 });
 
+$('body').on('change', '#tipo', switchMinMaxInputs);
+$('#tipo').trigger('change');
+
 $('body').on('click', '.file-wrap', function (e) {
   var $this = $(this),
       $target = $(e.target);
@@ -313,6 +316,20 @@ function addNewRow($aux_field, e, return_row) {
       $select.selectpicker();
 
   if (return_row) return $new_row;
+}
+
+function switchMinMaxInputs() {
+  switch ($(this).val()) {
+    case 'numero':
+    case 'moneda-peso':
+    case 'moneda-dolar':
+      // Mostrar campos minimo y maximo
+      $('#type-number-min-max').fadeIn('fast');
+      break;
+    default:
+      $('#type-number-min-max').fadeOut('fast');
+      break;
+  }
 }
 
 function deleteRow(e) {
